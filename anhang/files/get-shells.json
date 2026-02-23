@@ -1,0 +1,99 @@
+{
+	"paging_metadata": {},
+	"result": [
+		{
+			"modelType": "AssetAdministrationShell",
+			"assetInformation": {
+				"assetKind": "NotApplicable"
+			},
+			"submodels": [
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://admin-shell.io/idta/SubmodelTemplate/ DigitalNameplate/3/0"
+						}
+					],
+					"type": "ModelReference"
+				},
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://admin-shell.io/idta/SubmodelTemplate/ TechnicalData/2/0"
+						}
+					],
+					"type": "ModelReference"
+				},
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://example.com/ids/sm/6164_5162_5052_4177"
+						}
+					],
+					"type": "ModelReference"
+				}
+			],
+			"id": "https://example.com/ids/aas/6014_5162_5052_5233",
+			"idShort": "AbatementSystem"
+		},
+		{
+			"modelType": "AssetAdministrationShell",
+			"assetInformation": {
+				"assetKind": "NotApplicable",
+				"globalAssetId": "https://example.com/ids/asset/0001_5162_5052_1708"
+			},
+			"submodels": [
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://admin-shell.io/idta/SubmodelTemplate/ DigitalNameplate/3/0"
+						}
+					],
+					"type": "ModelReference"
+				}
+			],
+			"id": "https://example.com/ids/aas/6460_5162_5052_9098",
+			"idShort": "SemiconductorX"
+		},
+		{
+			"modelType": "AssetAdministrationShell",
+			"assetInformation": {
+				"assetKind": "NotApplicable"
+			},
+			"submodels": [
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://admin-shell.io/idta/SubmodelTemplate/ DigitalNameplate/3/0"
+						}
+					],
+					"type": "ModelReference"
+				},
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://admin-shell.io/idta/SubmodelTemplate/ TechnicalData/2/0"
+						}
+					],
+					"type": "ModelReference"
+				},
+				{
+					"keys": [
+						{
+							"type": "Submodel",
+							"value": "https://example.com/ids/sm/3254_5162_5052_1995"
+						}
+					],
+					"type": "ModelReference"
+				}
+			],
+			"id": "https://example.com/ids/aas/7280_5162_5052_8673",
+			"idShort": "IndustrialExhausPump"
+		}
+	]
+}

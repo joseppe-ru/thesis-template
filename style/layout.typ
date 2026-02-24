@@ -50,5 +50,39 @@
   show heading.where(level: 2): set text(size: 14pt, weight: "semibold")
   show heading.where(level: 3): set text(size: 12pt, weight: "semibold")
   show heading.where(level: 4): set text(size: 12pt, weight: "regular", style: "italic")
+
+  // Fette  Referenzen
+
+  show ref: it => {
+    let label-str = str(it.target)
+
+    if label-str.starts-with("fig:") or label-str.starts-with("tab:") or label-str.starts-with("appendix:") {
+      strong(it)
+    } else {
+      it
+    }
+  }
+
+  // Zeile Abstand unter bildern
+  show figure: set block(above: 2em, below: 2em)
+
+  // Tabellen
+  set table(
+    fill: (x, y) => if x == 0 or y == 0 { rgb("BDC1D0") },
+    inset: (right: 1.5em),
+  )
+
+  show table.cell: it => {
+    if it.x == 0 or it.y == 0 {
+      set text(black)
+      strong(it)
+    } else if it.body == [] {
+      // Replace empty cells with 'N/A'
+      pad(..it.inset)[_N/A_]
+    } else {
+      it
+    }
+  }
+
   body
 }

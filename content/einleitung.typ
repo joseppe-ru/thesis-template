@@ -1,3 +1,5 @@
+// #import "@preview/acrostiche:0.7.0": *
+#import "../utils.typ": *
 = Einleitung
 <einleitung>
 == Motivation
@@ -57,39 +59,33 @@ verbundenen Kontrolle des Datenanbieters über seine Daten.
 <aufgabenstellung>
 === Allgemein
 <allgemein>
-Die übergeordnete Zielsetzung dieser Forschungsarbeit ist die
-#strong[Integration und der Austausch] von Equipmentdaten von
-Vakuumpumpen und Abatement-Systemen zur Überwachung und
-Wartungsoptimierung in der Halbfabrikation. Hierfür soll untersucht
-werden, wie die #strong[Asset Administration Shell] als standardisierter
-Digitaler Zwilling und der #strong[Eclipse Dataspace Connector] für
-einen souveränen Datenaustausch genutzt werden können, um die Lücke
-zwischen dem Fabrikbetreiber und dem Equipmenthersteller zu schließen.
+Die übergeordnete Zielsetzung dieser Forschungsarbeit ist die Integration und der souveräne Austausch von Equipmentdaten – spezifisch von Vakuumpumpen und Abatement-Systemen – zur kontinuierlichen Überwachung und Wartungsoptimierung in der Halbleiterfertigung. Der Forschungs- und Implementierungsaufwand dieses Vorhabens erstreckt sich über zwei konsekutive Projektphasen, beginnend im Sommersemester 2025 bis zum Abschluss im Wintersemester 2025/2026.
+Die vorliegende Forschungsarbeit führt beide Erarbeitungsstände in einer Gesamtdarstellung zusammen. Im Kern soll untersucht werden, wie die #short("AAS") als standardisierter Digitaler Zwilling und der #short("EDC") für einen sicheren Datenaustausch genutzt werden können, um die informationstechnische Lücke zwischen dem Fabrikbetreiber und dem Equipmenthersteller zu schließen.
+
 
 === SomerSemester 2025
 <somersemester-2025>
-Die vorliegende Arbeit stellt die erste Phase dieses Forschungsvorhabens
-dar und legt die technologische und konzeptionelle Grundlage für die
+Die erste Phase dieses Forschungsvorhabens legt die technologische und konzeptionelle Grundlage für die
 gesamte Datenpipeline. Der Schwerpunkt liegt auf der Erstellung einer
 validen, standardisierten und dynamischen Datengrundlage. Dies umfasst
 zunächst eine fundierte Einarbeitung in die relevanten Technologiefelder
 der Halbleiterproduktion, der Asset Administration Shell und des Eclipse
 Dataspace Connectors.
 
-Auf dieser Wissensbasis erfolgt die #strong[Konzeption und Erstellung
-  von AAS-Modellen] für eine Vakuumpumpe und ein Abatement-System. Die
+Auf dieser Wissensbasis erfolgt die Konzeption und Erstellung
+von AAS-Modellen für eine Vakuumpumpe und ein Abatement-System. Die
 Modellierung soll dabei möglichst umfangreich sein, um die Assets
 detailliert abzubilden. Ein zentrales Element ist die Erstellung eines
 Konzepts zur Bereitstellung der für die Wartungsanalyse entscheidenden
 Druckwerte. Konkret müssen die folgenden drei Werte über die
-Verwaltungsschalen zugänglich gemacht werden: der #strong[Solldruck] der
-Pumpe, der #strong[tatsächlich erreichte Druck an ihrem Ausgang] sowie
-der #strong[Druck am Eingang des nachgeschalteten Abatement-Systems];.
+Verwaltungsschalen zugänglich gemacht werden: der Solldruck der
+Pumpe, der tatsächlich erreichte Druck an ihrem Ausgang sowie
+der Druck am Eingang des nachgeschalteten Abatement-Systems.
 Die Differenz und das Verhalten dieser Werte zueinander bilden die
 informationstechnische Basis für die spätere Fehlerdiagnose.
 
 Um eine realitätsnahe Datengrundlage für die Analyse zu schaffen, wird
-parallel ein #strong[Druck-Simulator entwickelt];. Dessen Aufgabe ist
+parallel ein Druck-Simulator entwickelt. Dessen Aufgabe ist
 die Modellierung und Validierung verschiedener Wartungsszenarien. Der
 Simulator muss das Druckverhalten in Abhängigkeit von Faktoren wie
 Verschmutzung, Durchfluss und Pumpenleistung abbilden können.
@@ -97,9 +93,19 @@ Insbesondere sollen Szenarien für typische Störfälle wie Pumpenausfälle
 und Rohrverstopfungen modelliert werden. Dies schließt den normalen
 Betrieb, eine allmähliche Verschmutzung, eine plötzliche Blockade sowie
 einen abrupten Pumpenausfall oder Druckabfall mit ein. Die
+
 Implementierung dieser Komponenten und die Verfassung der vorliegenden
 wissenschaftlichen Dokumentation bilden den Abschluss dieser ersten
 Projektphase.
+
+=== Wintersemester 2025/26
+<wintersemester-2025-26>
+Aufbauend auf den technologischen Grundlagen der ersten Projektphase verlagert sich der Fokus im Wintersemester 2025/2026 auf den systemübergreifenden Datentransfer sowie den Aufbau einer nachgelagerten Client-Infrastruktur. Ein zentrales Ziel ist die Implementierung einer prototypischen Datenpipeline, welche den souveränen Datenaustausch zwischen der Halbleiterfabrik und dem Equipmenthersteller innerhalb eines verteilten Datenraums realisiert. Im Fokus steht dabei die Integration des #short("EDC") der als HTTP-Proxy fungiert, um die sichere Kommunikation sowie die notwendige Vertragsaushandlung informationstechnisch abzubilden.
+
+Um die über den EDC bereitgestellten Verwaltungsschalen datenökonomisch zu verwerten, bedarf es der Entwicklung einer dedizierten Client-Anwendung. Diese Applikation hat die Aufgabe, die kontinuierlich aktualisierten Druckwerte aus der BaSyx-Umgebung über den Datenraum strukturiert abzurufen. Zur Gewährleistung der Nachvollziehbarkeit und für weiterführende Inspektionen sollen die extrahierten Zeitreihendaten persistiert und für eine Dashboard-gestützte, visuelle Aufbereitung zugänglich gemacht werden.
+
+Den analytischen Abschluss dieser Projektphase bildet die Evaluation der generierten Druckdifferenzen. Anstelle einer hochkomplexen maschinellen Lernmethode liegt der Schwerpunkt hierbei auf dem Entwurf und der Implementierung einer deterministischen, schwellwertbasierten Analyse-Schnittstelle innerhalb des Clients. Durch diese regelbasierte Auswertung sollen spezifische Anomalien und Fehlermuster grundlegend klassifiziert werden, um die prinzipielle Machbarkeit der prädiktiven Wartung (Predictive Maintenance) zu validieren. Das finale Ziel ist somit der Proof of Concept der gesamten informationstechnischen Wirkkette – von der simulierten Datengenerierung über den souveränen Datentransfer bis hin zur regelbasierten Zustandsbewertung am Endpunkt.
+
 
 == Aufbau der Arbeit
 <aufbau-der-arbeit>
@@ -108,16 +114,15 @@ gegliedert, die den Leser systematisch von der Problemstellung über die
 theoretischen Grundlagen und die Konzeption bis hin zur praktischen
 Implementierung und deren Überprüfung führen.
 
-#strong[Kapitel 2] legt das theoretische Fundament zum Verständnis der
+#strong[@grundlagen] legt das theoretische Fundament zum Verständnis der
 Arbeit. Es werden zunächst die prozesstechnischen Besonderheiten der
 Halbleiterfertigung mit Fokus auf die Sub-Fab erläutert. Anschließend
 werden die Kernkonzepte von Industrie 4.0, des Digitalen Zwillings und
-dessen standardisierter Implementierung durch die Asset Administration
-Shell (AAS) vorgestellt. Abgeschlossen wird das Kapitel mit einer
-Einführung in den Eclipse Dataspace Connector (EDC) als Technologie für
+dessen standardisierter Implementierung durch die #short("AAS") vorgestellt. Abgeschlossen wird das Kapitel mit einer
+Einführung in den #short("EDC") als Technologie für
 einen souveränen Datenaustausch.
 
-Aufbauend auf diesen Grundlagen wird in #strong[Kapitel 3] das
+Aufbauend auf diesen Grundlagen wird in #strong[@konzeption] das
 spezifische Lösungskonzept für die Aufgabenstellung entwickelt. Dies
 umfasst den Entwurf der informationstechnischen Zielarchitektur, die
 Herleitung des Simulationsansatzes zur Generierung der Druckdaten sowie
@@ -125,19 +130,19 @@ die Begründung für die Auswahl von Eclipse BaSyx als
 Implementierungs-Framework. Das Kapitel schließt mit dem detaillierten
 Entwurf des AAS-Modells für die Pumpe und das Abatement-System.
 
-#strong[Kapitel 4] dokumentiert die praktische Umsetzung des entworfenen
+#strong[@implementierung] dokumentiert die praktische Umsetzung des entworfenen
 Konzepts. Die einzelnen Schritte, von einer Untersuchung der
 Datenraum-Konnektivität über den Aufbau der AAS-Laufzeitumgebung bis hin
 zur konkreten Erstellung der Verwaltungsschalen und der Realisierung und
 Anbindung des Drucksimulators, werden hier detailliert beschrieben.
 
 Die Verifikation der entwickelten Komponenten ist Gegenstand von
-#strong[Kapitel 5];. Hier werden die durchgeführten Funktionalitätstests
+#strong[@tests-und-ergebnisse];. Hier werden die durchgeführten Funktionalitätstests
 der AAS-Laufzeitumgebung sowie die Überprüfung des Drucksimulators und
 seiner erfolgreichen Datenübertragung in die Verwaltungsschale dargelegt
 und die Ergebnisse präsentiert.
 
-Abschließend fasst #strong[Kapitel 6] die Arbeit zusammen, reflektiert
+Abschließend fasst #strong[@fazit-und-ausblick] die Arbeit zusammen, reflektiert
 die erzielten Ergebnisse im Kontext der ursprünglichen Aufgabenstellung
 und gibt einen Ausblick auf die weiterführenden Arbeiten im kommenden
 Semester, welche die vollständige Realisierung der Datenpipeline und die

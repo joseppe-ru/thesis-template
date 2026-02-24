@@ -9,15 +9,14 @@
   appendix: none,
   bib: none,
 ) = {
+  // === Deckblatt
+  cover()
+
   // === Layout -> Seitengestaltung
   show: layout
 
   // Abkürzungen
   init-acronyms(acronyms)
-
-
-  // === Deckblatt
-  cover()
 
   include "anhang/abstract.typ"
 
@@ -29,7 +28,7 @@
   pagebreak()
 
   // Abkürzungsverzeichnis
-  print-index(delimiter: "", title: "Abkürzungsverzeichnis", clickable: true, outlined: true)
+  print-index(delimiter: "", title: "Abkürzungsverzeichnis", clickable: true, outlined: true, used-only: true)
   pagebreak()
 
   // Abbildungsverzeichnis

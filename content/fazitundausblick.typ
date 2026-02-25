@@ -1,45 +1,16 @@
 = Fazit und Ausblick
 <fazit-und-ausblick>
-Die vorliegende Arbeit adressierte die Herausforderung der
-ineffizienten, reaktiven Wartung von prozesskritischen Anlagen in der
-Sub-Fab von Halbleiterfabriken. Ausgehend von der Problemstellung, dass
-relevante Betriebsdaten von Vakuumpumpen und Abatement-Systemen oft nur
-manuell vor Ort auslesbar sind, wurde ein Konzept für einen
-standardisierten und datensouveränen Informationsaustausch entwickelt,
-um die Grundlagen für prädiktive Wartungsstrategien zu schaffen. Das
-Kernziel war die Realisierung der ersten Hälfte einer prototypischen
-Datenpipeline, die von der Datenerfassung am Asset bis zu dessen
-standardisierter Repräsentation im Digitalen Zwilling reicht.
+== Zusammenfassung der Ergebnisse
+Die vorliegende Arbeit adressierte die Herausforderung der ineffizienten, reaktiven Wartung von prozesskritischen Anlagen in der Sub-Fab von Halbleiterfabriken. Um fehleranfällige, manuelle Vor-Ort-Ablesungen zu überwinden, wurde ein fundiertes Konzept für einen standardisierten und datensouveränen Informationsaustausch entwickelt.
 
-Im Rahmen der Konzeption und Implementierung konnten die in der
-Aufgabenstellung für das erste Semester formulierten Ziele erfolgreich
-umgesetzt werden. Es wurde eine voll funktionsfähige
-AAS-Laufzeitumgebung auf Basis von Eclipse BaSyx aufgebaut und die
-Verwaltungsschalen für eine Vakuumpumpe und ein Abatement-System unter
-Verwendung von Standard-Templates und anwendungsspezifischen
-Teilmodellen modelliert. Ein zentraler Meilenstein war die Entwicklung
-eines prozessbasierten Drucksimulators in Python, der in der Lage ist,
-Daten für eine Reihe von Wartungsszenarien – vom Optimalbetrieb über
-schleichende Rohrverschmutzung bis hin zum akuten Pumpendefekt – zu
-generieren. Die erfolgreiche Anbindung dieses Simulators an den
-AAS-Server über eine REST-API demonstriert eindrücklich die
-Kernfunktionalität der konzipierten Architektur: die echtzeitnahe
-Aktualisierung eines standardisierten Digitalen Zwillings mit
-Live-Betriebsdaten. Damit wurde der Nachweis erbracht, dass eine valide
-Datengrundlage für weiterführende Übertragungen und Analysen
-bereitgestellt werden kann.
+Im Rahmen der praktischen Umsetzung wurde zunächst eine voll funktionsfähige AAS-Laufzeitumgebung auf Basis von Eclipse BaSyx implementiert und durch einen prozessbasierten Python-Drucksimulator ergänzt. Dieser Simulator modelliert valide Livedaten für diverse Wartungsszenarien, von der allmählichen Rohrverschmutzung bis hin zum akuten Pumpenausfall. Die informationstechnische Überbrückung der Domänengrenzen erfolgte anschließend durch die Bereitstellung einer lokalen EDC-Infrastruktur. Eine eigens entwickelte Client-Anwendung übernimmt dabei die kontinuierliche Vertragsaushandlung, den gesicherten Datenabruf, die Persistierung in einem maschinenlesbaren CSV-Format sowie die Visualisierung über Grafana. Damit wurde die zentrale Forschungsfrage der Arbeit positiv beantwortet: Durch die Kombination aus genormter Verwaltungsschale und dem EDC als souveränem Datenproxy wird eine hochgradig skalierbare Infrastruktur geschaffen, die eine proaktive, unternehmensübergreifende Fernwartungsstrategie ermöglicht.
 
-Die Ergebnisse dieser Arbeit bilden eine robuste Grundlage für die im
-zweiten Semester anstehenden Aufgaben. Die nun verfügbare,
-datengestützte AAS-Infrastruktur ist die Voraussetzung für den nächsten
-Schritt: die Implementierung der vollständigen Datenpipeline unter
-Einbeziehung des Eclipse Dataspace Connectors. Der Fokus wird darauf
-liegen, die erstellten Verwaltungsschalen über einen souveränen
-Datenraum einem externen Akteur – dem Equipmenthersteller – kontrolliert
-zur Verfügung zu stellen. Die vom Simulator generierten,
-szenario-spezifischen Daten werden anschließend als Trainings- und
-Validierungsdatensatz für die Entwicklung einer KI-gestützten Analyse
-der Druckdifferenzen dienen. Das finale Ziel bleibt die Ableitung
-konkreter, proaktiver Wartungsempfehlungen, um die Vision einer
-datengetriebenen Instandhaltung in der Halbleiterfertigung zu
-realisieren.
+== Kritische Reflexion und methodische Einordnung
+Bezüglich der in der ursprünglichen Aufgabenstellung geforderten Analyse der Druckdifferenzen zur Anomalieerkennung wurde im Rahmen dieser Arbeit ein funktionaler Proof of Concept in Form einer deterministischen, schwellwertbasierten Auswertung implementiert. Die ursprüngliche Zielsetzung einer KI-gestützten Mustererkennung wurde architektonisch bewusst so adaptiert, dass die standardisierte Pipeline als technologischer Wegbereiter fungiert.
+
+Anstatt ein monolithisches Machine-Learning-Modell isoliert in den Client zu integrieren, lag der Fokus auf der informationstechnischen Fundierung und Absicherung der verteilten Datenpipeline. Die implementierte deterministische Auswertung dient hierbei als essenzielle Baseline-Validierung. Sie erbringt den Nachweis, dass die durch den Simulator generierten Fehlerzustände latenzfrei über den EDC-Proxy übertragen und regelbasiert klassifiziert werden können. Diese methodische Vorgehensweise ist ein zwingender Zwischenschritt, da sie erst die notwendige, strukturierte und validierte Datengrundlage für fortgeschrittene Verfahren des maschinellen Lernens schafft.
+
+== Ausblick und zukünftige Forschungsansätze
+Für zukünftige Arbeiten bietet dieser evaluierte Demonstrator eine ideale Ausgangsbasis. Ein logischer nächster Schritt ist der Abgleich der generierten Simulationsdaten mit Messwerten einer realen Pumpe in Zusammenarbeit mit einem Praxispartner. Zudem kann die entwickelte Client-Anwendung um die tatsächliche Anbindung an ein produktives ERP-System des Herstellers erweitert werden.
+
+Darauf aufbauend sollte die Integration der avisierten KI-gestützten Analyseverfahren erfolgen. Für die Klassifizierung der komplexen, schleichenden Anomalien – wie etwa einer progressiven Rohrverschmutzung – empfiehlt sich perspektivisch der Einsatz von etablierten überwachten Lernverfahren, beispielsweise Random Forests. Um darüber hinaus eine holistische Vorhersage auf Basis der kontinuierlichen Zeitreihen und Druckhistorien zu realisieren, bietet sich die Integration rekurrenter neuronaler Netze, insbesondere Long Short-Term Memory Architekturen, an. Aufgrund der generischen Konzeption der entwickelten Pipeline können diese fortgeschrittenen KI-Modelle zukünftig als eigenständige, souveräne Datenkonsumenten in den EDC-Datenraum eingebunden werden, ohne tiefgreifende strukturelle Anpassungen an der bestehenden Infrastruktur vornehmen zu müssen.

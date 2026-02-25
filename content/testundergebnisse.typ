@@ -1,91 +1,51 @@
+#import "../utils.typ": *
 = Tests und Ergebnisse
-<tests-und-ergebnisse> == Funktionalitätstest der AAS-Laufzeitumgebung <funktionalitätstest-der-aas-laufzeitumgebung> Nach dem Aufbau der Systemumgebung gemäß Kapitel 4.2 wurde die korrekte Funktion der AAS-Laufzeitumgebung verifiziert. Die Inbetriebnahme erfolgte durch die Ausführung des Befehls `docker compose up -d`, welcher alle in der Konfigurationsdatei definierten BaSyx-Dienste als dezentralisierte Container im Hintergrund startet. Die erfolgreiche Initialisierung wurde unmittelbar durch die Überprüfung der Erreichbarkeit der zentralen Service-Endpunkte auf dem lokalen Host bestätigt. Dazu zählten das #strong[AAS Repository]
-(“http:\/\/localhost:8081/shells“), die #strong[AAS Registry]
-(“http:\/\/localhost:8082/shell-descriptors“), die #strong[Submodel
-  Registry] (“http:\/\/ localhost:8083/submodel-descriptors“), der
-#strong[Discovery-Service] (“http:\/\/localhost:8084/lookup/shells“)
-sowie die grafische #strong[AAS Web UI] (“http:\/\/localhost:3000“)
-(vgl. #strong[Abbildung @fig:basyx_web_ui_loaded];). Als primärer
-visueller Indikator für einen erfolgreichen Start diente die
-Weboberfläche, über die das zuvor erstellte AASX-Paket erfolgreich in
-die Laufzeitumgebung geladen wurde, was durch die Anzeige der
-#strong[SemiconductorX];-Verwaltungsschale bestätigt wurde.
+<tests-und-ergebnisse>
 
-#figure(image("../bilder/basyx_web_ui.png", width: 80%), caption: [
-  Zielarchitektur der Datenpipeline vom Asset zum Client
+
+
+== Automatisierte Bereitstellung des Demonstrators
+<eval-orchestrierung>
+Die Zusammenführung der einzelnen Domänen (Datenanbieter, Datenraum und Datennutzer) zu einer funktionsfähigen Gesamtarchitektur erfordert eine präzise Orchestrierung der verteilten Systemkomponenten. Um eine deterministische und plattformunabhängige Reproduzierbarkeit (evaluiert unter einer Linux-Umgebung) zu gewährleisten, wurde die gesamte Startroutine in einem zentralen Shell-Skript (`run_full_setup.sh`) automatisiert (vgl. @appendix:runsetup). Der zugehörige Quellcode sowie die Konfigurationsdateien werden im GitLab der HTW Dresden (Zweig "Wintersemester2025_26", @iversion) vorgehalten.
+
+Dieses Skript fungiert als übergeordneter Orchestrator und startet die Microservices in einer sequenziellen Reihenfolge:
+
++ *Datenanbieter:* Initialisierung der #short("AAS")-Laufzeitumgebung via Docker Compose.
+
++ *Datengenerierung:* Start des Python-Drucksimulators in einer isolierten virtuellen Umgebung (`venv`). Das Skript implementiert hierbei eine automatische Vorabprüfung der benötigten Systemabhängigkeiten (wie `simpy` und `requests`), um Laufzeitfehler frühzeitig abzufangen.
+
++ *Datenraum:* Bereitstellung des Provider- und Consumer-Konnektors.
+
++ *Datennutzer:* Automatisierter Build-Prozess und Start des Java-basierten #short("AAS")-Clients sowie des Grafana-Dashboards.
+
+== Evaluation der souveränen Datenpipeline
+<eval-workflow>
+Nach der erfolgreichen, fehlerfreien Ausführung des Orchestrierungs-Skripts wurde der Gesamtsystem-Workflow – vom Asset bis zum Dashboard – in einem integralen Systemtest evaluiert. Dieser Test durchläuft alle informationstechnischen Stationen und verifiziert das Zusammenspiel der im Wintersemester entwickelten Komponenten.
+
+=== Datengenerierung und -bereitstellung
+Der Testlauf beginnt in der grafischen Oberfläche des Python-Simulators. Durch die manuelle Triggerung eines spezifischen Wartungsszenarios (beispielsweise "Rohrverstopfung") wird die Generierung veränderter Druckwerte initiiert. Wie in @fig:pythonsimulatorui auf der linken Seite dargestellt lässt die Benutzeroberfläche sowohl die Auswahl vorgefertigter Wartungsszenarien zu als auch manuelle Eingabe von Werten.
+
+#figure(image("../bilder/sim_ui.png"), caption: [
+  Benutzeroberfläche des Simulators
 ])
-<fig:basyx_web_ui_loaded>
+<fig:pythonsimulatorui>
 
-Der entscheidende Test für die spätere Anbindung des Simulators war die
-umfassende Überprüfung der HTTP/REST-Schnittstelle. Eine besonders
-nützliche Ressource ist hierbei die interaktive Swagger-UI, die vom
-AAS-Server unter “http:\/\/localhost:8081/swagger-ui/index.html“
-bereitgestellt wird. Diese Weboberfläche dokumentiert alle verfügbaren
-API-Endpunkte und ermöglicht deren direktes Testen im Browser (vgl.
-#strong[Abbildung @fig:swagger-ui];). Um die grundsätzliche
-Funktionalität des Lesezugriffs zu validieren, wurde eine beispielhafte
-Testanfrage mittels “curl“ an den Server gesendet:
+Die erfolgreiche Übermittlung via HTTP-PATCH an den lokalen BaSyx-Server lässt sich unmittelbar in der #short("AAS")-Web-UI (erreichbar unter `localhost:3000`) verifizieren. Die Verwaltungsschale spiegelt die simulierten Druckdifferenzen in Echtzeit wider. Wie in @fig:aaswebui dargestellt, werden die Druckwerte direkt für die richtigen Submodeltemplates eingetragen. Ebenso wird die Strucktur der Verwaltungsschale über die grafische Ansicht der Weboberfläche deutlich.
 
-| curl -X ’GET’ ’http:\/\/localhost:8081/shells’ -H ’accept:
-application/json’|
-
-Der Server antwortete auf diese Anfrage erfolgreich mit einer
-JSON-Repräsentation aller geladenen Verwaltungsschalen. Die vollständige
-JSON-Antwort dieses Aufrufs ist im #strong[Anhang @appendix:getShells]
-dokumentiert. Um den Schreibzugriff zu verifizieren, wurde zusätzlich
-eine “PATCH“-Anfrage zum Modifizieren eines Druckwertes erfolgreich
-durchgeführt. Diese Tests bestätigen, dass die AAS-Laufzeitumgebung voll
-funktionsfähig ist und als stabile Basis für die nachfolgende Anbindung
-des Drucksimulators dient.
-
-#figure(image("../bilder/swagger-ui.png", width: 80%), caption: [
-  Zielarchitektur der Datenpipeline vom Asset zum Client
+#figure(image("../bilder/basyx_wu_ui.png"), caption: [
+  Webansicht der Verwaltungsschale
 ])
-<fig:swagger-ui>
+<fig:aaswebui>
 
-== Test des Drucksimulators
-<test-des-drucksimulators>
-Die Verifikation des Drucksimulators konzentriert sich auf die korrekte
-Umsetzung der zuvor konzipierten Logik und die funktionale Integration
-in die Datenpipeline. Es ist an dieser Stelle explizit anzumerken, dass
-das Ziel dieser Arbeit nicht die Erstellung eines physikalisch
-validierten Simulationsmodells ist, da dies umfangreiche empirische
-Messreihen erfordern würde, die außerhalb des Projektrahmens liegen. Die
-konzipierten Wartungsszenarien wurden jedoch auf ihre Plausibilität hin
-mit einem Praxispartner abgeglichen. Der Test verifiziert somit, ob der
-Simulator die definierten Szenarien softwareseitig korrekt implementiert
-und als dynamische Datenquelle für die AAS-Laufzeitumgebung fungieren
-kann.
+=== Vertragsaushandlung und Datentransfer
+Der kritische Pfad dieses Systemtests ist die Überwindung der Domänengrenze. Der Java-Client initiiert vollautomatisiert die Vertragsaushandlung über den lokalen #short("EDC")-Consumer-Konnektor. Die Analyse der Docker-Logs des Konnektors bestätigt den erfolgreichen Austausch der kryptografischen Token. Der Client nutzt den erhaltenen Zugangsschlüssel, um die Live-Daten der #short("AAS") über den #short("EDC")-Proxy abzufragen. Der souveräne Datenraum blockiert in diesem Testaufbau gezielt alle unautorisierten Direktanfragen und lässt ausschließlich Zugriffe mit gültigem Token passieren, was die Einhaltung der Datensouveränität informationstechnisch belegt.
 
-Die Überprüfung der internen Logik erfolgte über die grafische
-Benutzeroberfläche (GUI) des Simulators. Durch das Aktivieren der
-verschiedenen Wartungsszenarien, wie beispielsweise Rohrverstopfung,
-wurde beobachtet, dass die Ist-Druckwerte für Pumpe und Abatement nicht
-abrupt, sondern schrittweise an die neuen Soll-Werte angenähert wurden.
-Dieses Verhalten belegt, dass die in #strong[Kapitel 4.4] beschriebene
-Logik zur Nachbildung eines trägen Systemverhaltens erfolgreich
-umgesetzt wurde.
+In @appendix:aasclilog ist ein Auszug aus dem log der Client-Anwendung zu finden, welche mit dem Befhel `docker logs aas_consumer_client -f` ausgegeben werden können.
 
-Der entscheidende Schritt war die Validierung der Datenübertragung an
-den AAS-Server, welche den Kernfokus dieses Tests darstellt. Nach dem
-Start des Simulators und der Auswahl eines Szenarios wurde die
-Weboberfläche der BaSyx-Laufzeitumgebung beobachtet. Es konnte
-verifiziert werden, dass die Werte der Eigenschaften ‘ActualPressure‘ in
-den jeweiligen ‘Operational Data‘-Teilmodellen in Echtzeit aktualisiert
-wurden und exakt den im Simulator angezeigten Werten entsprachen. Wie in
-#strong[Abbildung @fig:basyx_ui_live_update] zu sehen, entspricht der im
-Simulator eingestellte Wert dem in der AAS-WebUI angezeigten Wert.
+=== Auswertung, Persistierung und Visualisierung:
+In der Endpunkt-Domäne validiert der Test die korrekte Verarbeitung der JSON-Antworten. Der im Java-Client integrierte `CsvWriter` extrahiert die ankommenden Druckwerte und schreibt diese iterativ, versehen mit einem korrekten Zeitstempel, in die lokale `pressure_data.csv`. Den finalen visuellen Nachweis des Workflows liefert das Grafana-Dashboard (`localhost:3001`). Die Web-Oberfläche liest die #short("CSV")-Datei erfolgreich über das angebundene Volume ein und transformiert die Datenpunkte in dynamische Liniendiagramme. In @fig:grafana zu sehen ist auf der linken Seite der historische Plot und auf der rechten Seite eine tabellarische Ansicht der Druckwerte.
 
-#figure(image("../bilder/basyx_ui_live_update.png", width: 80%), caption: [
-  Gegenüberstellung Simulator und Verwaltungsschale Webansicht
+#figure(image("../bilder/grafana.png"), caption: [
+  Grafana - Visualisierung der Druckwerte
 ])
-<fig:basyx_ui_live_update>
-
-Zusammenfassend lässt sich festhalten, dass die durchgeführten Tests die
-primäre Funktion des Simulators im Kontext dieser Arbeit erfolgreich
-nachweisen: Er dient als zuverlässiger, szenario-gesteuerter
-Datenprovider. Die erfolgreiche und dynamische Aktualisierung der Werte
-in den jeweiligen Verwaltungsschalen bestätigt die Funktionalität der
-ersten Hälfte der konzipierten Datenpipeline – von der simulierten
-Datenerzeugung bis zur standardisierten Repräsentation im Digitalen
-Zwilling.
+<fig:grafana>

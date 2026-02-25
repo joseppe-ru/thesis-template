@@ -1,4 +1,4 @@
-= Strucktureller Aufbau der Verwaltungsschale <appendix:aasx-model>
+= Struktureller Aufbau der Verwaltungsschale <appendix:aasx-model>
 
 // <strucktureller-aufbau-der-verwaltungsschale>
 - #strong[Shell:] SemiconductorX (Parent)

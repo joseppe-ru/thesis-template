@@ -63,7 +63,7 @@ Die übergeordnete Zielsetzung dieser Forschungsarbeit ist die Integration und d
 Die vorliegende Forschungsarbeit führt beide Erarbeitungsstände in einer Gesamtdarstellung zusammen. Im Kern soll untersucht werden, wie die #short("AAS") als standardisierter Digitaler Zwilling und der #short("EDC") für einen sicheren Datenaustausch genutzt werden können, um die informationstechnische Lücke zwischen dem Fabrikbetreiber und dem Equipmenthersteller zu schließen.
 
 
-=== SomerSemester 2025
+=== Sommersemester 2025
 <somersemester-2025>
 Die erste Phase dieses Forschungsvorhabens legt die technologische und konzeptionelle Grundlage für die
 gesamte Datenpipeline. Der Schwerpunkt liegt auf der Erstellung einer
@@ -104,7 +104,7 @@ Aufbauend auf den technologischen Grundlagen der ersten Projektphase verlagert s
 
 Um die über den EDC bereitgestellten Verwaltungsschalen datenökonomisch zu verwerten, bedarf es der Entwicklung einer dedizierten Client-Anwendung. Diese Applikation hat die Aufgabe, die kontinuierlich aktualisierten Druckwerte aus der BaSyx-Umgebung über den Datenraum strukturiert abzurufen. Zur Gewährleistung der Nachvollziehbarkeit und für weiterführende Inspektionen sollen die extrahierten Zeitreihendaten persistiert und für eine Dashboard-gestützte, visuelle Aufbereitung zugänglich gemacht werden.
 
-Den analytischen Abschluss dieser Projektphase bildet die Evaluation der generierten Druckdifferenzen. Anstelle einer hochkomplexen maschinellen Lernmethode liegt der Schwerpunkt hierbei auf dem Entwurf und der Implementierung einer deterministischen, schwellwertbasierten Analyse-Schnittstelle innerhalb des Clients. Durch diese regelbasierte Auswertung sollen spezifische Anomalien und Fehlermuster grundlegend klassifiziert werden, um die prinzipielle Machbarkeit der prädiktiven Wartung (Predictive Maintenance) zu validieren. Das finale Ziel ist somit der Proof of Concept der gesamten informationstechnischen Wirkkette – von der simulierten Datengenerierung über den souveränen Datentransfer bis hin zur regelbasierten Zustandsbewertung am Endpunkt.
+Gemäß der Zielsetzung bildet die Auswertung der generierten Druckdifferenzen den analytischen Abschluss dieser Projektphase, wofür perspektivisch eine KI-gestützte Mustererkennung avisiert ist. Um eine solche komplexe maschinelle Lernmethode methodisch sauber zu fundieren, bedarf es jedoch zunächst einer validierten Baseline. Der Schwerpunkt liegt in dieser Arbeit daher auf dem Entwurf und der Implementierung einer deterministischen, schwellwertbasierten Analyse-Schnittstelle innerhalb des Clients. Durch diese regelbasierte Auswertung sollen spezifische Anomalien und Fehlermuster grundlegend klassifiziert werden, um die prinzipielle informationstechnische Machbarkeit der prädiktiven Wartung auf Basis der verteilten Datenarchitektur zu validieren und den Proof of Concept für spätere KI-Modelle zu erbringen.
 
 
 == Aufbau der Arbeit
@@ -142,8 +142,4 @@ der AAS-Laufzeitumgebung sowie die Überprüfung des Drucksimulators und
 seiner erfolgreichen Datenübertragung in die Verwaltungsschale dargelegt
 und die Ergebnisse präsentiert.
 
-Abschließend fasst #strong[@fazit-und-ausblick] die Arbeit zusammen, reflektiert
-die erzielten Ergebnisse im Kontext der ursprünglichen Aufgabenstellung
-und gibt einen Ausblick auf die weiterführenden Arbeiten im kommenden
-Semester, welche die vollständige Realisierung der Datenpipeline und die
-KI-gestützte Analyse umfassen werden.
+Abschließend fasst #strong[@fazit-und-ausblick] die Arbeit zusammen, reflektiert die erzielten Ergebnisse im Kontext der ursprünglichen Aufgabenstellung und gibt einen Ausblick auf zukünftige Forschungsarbeiten. Diese umfassen insbesondere die Anbindung externer Machine-Learning-Dienste an den etablierten Datenraum, um die avisierte KI-gestützte Analyse auf Basis der geschaffenen Infrastruktur vollständig zu realisieren.

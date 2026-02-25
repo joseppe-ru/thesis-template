@@ -1,0 +1,20 @@
+13:40:22.771 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.PressureWatcher -- ==>> Starting AAS-Client
+13:40:22.773 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Starte EDC-Vertragsaushandlung für Asset: aas-server
+13:40:22.846 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Katalog abgerufen. Offer-ID: YWFzLWNvbnRyYWN0:YWFzLXNlcnZlcg==:MGVkOTRmNDAtMmJiYS00ZjU4LWIyYzYtYzc4ZDZjMjk0ZTU0
+13:40:22.854 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Vertragsverhandlung initiiert. Negotiation-ID: df1cceb0-fb1b-4b36-9b18-a038fe7986c3
+13:40:24.862 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Vertrag erfolgreich geschlossen. Agreement-ID: 0be9c602-c9b3-4092-9c54-a84470b7e102
+13:40:24.868 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Transfer initiiert. Transfer-ID: 849e0a0a-a3d1-48ee-97fd-10f8c5530d02
+13:40:26.876 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Transfer ist im Status STARTED. EDR ist bereit.
+13:40:26.879 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.EdcNegotiationService -- Erfolgreich Authorization-Key aus EDR extrahiert!
+13:40:26.880 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.CsvWriter -- ==> Kombiniere Kombiniere
+13:40:26.888 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.CsvWriter --  ==>> new Data to CSV-File: 0.00;0.00;2026-02-25 13:40:26
+
+13:40:27.890 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.pressure.EDCPressureProvider -- http://localhost:19291/public/submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9pZHMvc20vMzI1NF81MTYyXzUwNTJfMTk5NQ/submodel-elements/SetPressure/$value
+13:40:27.896 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.CsvWriter -- ==> Kombiniere Kombiniere
+13:40:27.897 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.CsvWriter --  ==>> new Data to CSV-File: 130.00;130.00;2026-02-25 13:40:27
+
+13:40:28.897 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.pressure.EDCPressureProvider -- http://localhost:19291/public/submodels/aHR0cHM6Ly9leGFtcGxlLmNvbS9pZHMvc20vMzI1NF81MTYyXzUwNTJfMTk5NQ/submodel-elements/SetPressure/$value
+13:40:28.902 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.CsvWriter -- ==> Kombiniere Kombiniere
+13:40:28.902 [Thread-0] INFO de.htw_dresden.jrudolph.aas_consumer_client.processing.CsvWriter --  ==>> new Data to CSV-File: 130.00;130.00;2026-02-25 13:40:28
+
+

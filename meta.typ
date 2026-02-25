@@ -31,7 +31,7 @@
   "SDK": "Software development kit",
   "GUI": "grafische Benutzeroberfläche",
   "IDTA": "Industrial Digital Twin Association",
-  "IDSA": "Iternationnal Data Spaces Association",
+  "IDSA": "International Data Spaces Association",
   "CSV": "Comma Seperated Value",
   "JSON": "Java Script Object Notation",
   "ERP": "Enterprise Resource Planning",

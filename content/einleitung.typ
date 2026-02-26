@@ -46,7 +46,7 @@ Equipmentherstellers per Ferndiagnose möglich wäre.
 
 Im Rahmen des FuE-Seminars soll untersucht werden, inwieweit
 strukturierte Daten aus dem Sub-Fab Bereich einer Halbleiterfabrik zur
-Remote-Überwachung von Prozessen genutzt werden können, um und proaktive
+Remote-Überwachung von Prozessen genutzt werden können, um proaktive
 Wartungsempfehlungen zu geben. Hierbei steht die Integration von
 Digitalen Zwillingen auf Basis der AAS im Fokus. Die AAS ermöglicht eine
 standardisierte hierarchische Beschreibung von digitalen Zwillingen. Mit

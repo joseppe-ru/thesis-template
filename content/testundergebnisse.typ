@@ -30,7 +30,7 @@ Der Testlauf beginnt in der grafischen Oberfläche des Python-Simulators. Durch 
 ])
 <fig:pythonsimulatorui>
 
-Die erfolgreiche Übermittlung via HTTP-PATCH an den lokalen BaSyx-Server lässt sich in der #short("AAS")-Web-UI (`localhost:3000`) verifizieren. Die Verwaltungsschale spiegelt die simulierten Druckdifferenzen in Echtzeit wider. Wie in @fig:aaswebui dargestellt, werden die Druckwerte direkt für die richtigen Submodeltemplates eingetragen. Ebenso wird die Strucktur der Verwaltungsschale über die grafische Ansicht der Weboberfläche deutlich.
+Die erfolgreiche Übermittlung via HTTP-PATCH an den lokalen BaSyx-Server lässt sich in der #short("AAS")-Web-UI (`localhost:3000`) verifizieren. Die Verwaltungsschale spiegelt die simulierten Druckdifferenzen in Echtzeit wider. Wie in @fig:aaswebui dargestellt, werden die Druckwerte direkt für die richtigen Submodeltemplates eingetragen. Ebenso wird die Struktur der Verwaltungsschale über die grafische Ansicht der Weboberfläche deutlich.
 
 #figure(image("../bilder/basyx_wu_ui.png"), caption: [
   Webansicht der Verwaltungsschale

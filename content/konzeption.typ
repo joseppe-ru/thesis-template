@@ -351,7 +351,7 @@ Eingang abbildet. Die semantische Verknüpfung und der Abgleich genau
 dieser beiden Werte bilden die datentechnische Grundlage für die spätere
 Analyse von Rohrverschmutzungen und Pumpendefekten.
 
-Die Strucktur der Verwaltungsschale ist in @appendix:aasx-model beschrieben.
+Die Struktur der Verwaltungsschale ist in @appendix:aasx-model beschrieben.
 
 == Konzeption des souveränen Datenraums
 <kap:konzeption-edc>

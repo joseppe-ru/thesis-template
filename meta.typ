@@ -4,7 +4,7 @@
   degree: "Belegarbeit",
   faculty: "Informatik/Mathematik",
   supervisor: "Prof. Dr. rer. pol. Dirk Reichelt",
-  advisors: (" Dipl.-Inf. Stefan Vogt", "Dipl.-Wirt.-Inf. Paul Patolla"),
+  advisors: ("Dipl.-Inf. Stefan Vogt", "Dipl.-Wirt.-Inf. Paul Patolla"),
   bibNumber: "s88598",
   MatrikelNumber: "s88598",
   submissionDate: datetime(day: 28, month: 02, year: 2026),

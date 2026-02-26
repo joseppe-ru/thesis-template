@@ -1,8 +1,8 @@
 #import "../utils.typ": *
 = Grundlagen
-<grundlagen>
+<kap:grundlagen>
 == Halbleiterfertigung: Die Subfab und ihre Prozesse
-<halbleiterfertigung-die-subfab-und-ihre-prozesse>
+<kap:halbleiterfertigung-die-subfab-und-ihre-prozesse>
 Die moderne Halbleiterfertigung, wie sie beispielsweise im
 Halbleiterwerk von Bosch in Dresden betrieben wird, ist ein
 Paradebeispiel für eine hochautomatisierte, datengetriebene
@@ -59,7 +59,7 @@ Steigerung der Gesamtanlageneffektivität und zur Reduzierung
 ungeplanter Stillstände. @HilscherHalbleiterfertigung
 
 == Industrie 4.0 und der Digitale Zwilling
-<industrie-4.0-und-der-digitale-zwilling>
+<kap:industrie-4.0-und-der-digitale-zwilling>
 Die Vision der Industrie 4.0 zielt auf die Schaffung intelligenter,
 flexibler und weitgehend selbstorganisierter Produktionssysteme ab. Eine
 Grundvoraussetzung hierfür ist die lückenlose digitale Vernetzung aller
@@ -94,7 +94,7 @@ und datengetriebene Wertschöpfung in der intelligenten Fabrik der
 Zukunft.
 
 == Die Verwaltungsschale (Asset Administration Shell) als Standard
-<die-verwaltungsschale-asset-administration-shell-als-standard>
+<kap:die-verwaltungsschale-asset-administration-shell-als-standard>
 Während der Digitale Zwilling das übergeordnete, konzeptionelle Leitbild
 für die umfassende digitale Repräsentation eines Assets darstellt,
 bedarf es für dessen praktische Umsetzung in der Industrie 4.0 einer
@@ -158,7 +158,7 @@ Wertschöpfungskette und wird so zum zentralen Wegbereiter für die
 flexiblen und datengetriebenen Geschäftsmodelle der Industrie 4.0.
 
 == Der Eclipse Dataspace Connector
-<der-eclipse-dataspace-connector>
+<kap:der-eclipse-dataspace-connector>
 Während die Verwaltungsschale das #emph[Was] – also die standardisierte
 Struktur und Semantik – des Digitalen Zwillings definiert, adressieren
 Datenraumtechnologien das #emph[Wie] des Datenaustauschs. Die

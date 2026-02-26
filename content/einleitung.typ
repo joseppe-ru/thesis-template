@@ -1,9 +1,9 @@
 // #import "@preview/acrostiche:0.7.0": *
 #import "../utils.typ": *
 = Einleitung
-<einleitung>
+<kap:einleitung>
 == Motivation
-<motivation>
+<kap:motivation>
 Der Halbleiterproduktionsprozess stellt besonders hohe Anforderungen an
 seine Prozessumgebungen, weshalb Frontend Fabriken von
 Halbleiterherstellern als Reinraum aufgebaut sind. Sie bestehen aus drei
@@ -56,15 +56,15 @@ Datenaustausches liegt auf der Souveränität der Daten und der damit
 verbundenen Kontrolle des Datenanbieters über seine Daten.
 
 == Aufgabenstellung
-<aufgabenstellung>
+<kap:aufgabenstellung>
 === Allgemein
-<allgemein>
+<kap:allgemein>
 Die übergeordnete Zielsetzung dieser Forschungsarbeit ist die Integration und der souveräne Austausch von Equipmentdaten – spezifisch von Vakuumpumpen und Abatement-Systemen – zur kontinuierlichen Überwachung und Wartungsoptimierung in der Halbleiterfertigung. Der Forschungs- und Implementierungsaufwand dieses Vorhabens erstreckt sich über zwei konsekutive Projektphasen, beginnend im Sommersemester 2025 bis zum Abschluss im Wintersemester 2025/2026.
 Die vorliegende Forschungsarbeit führt beide Erarbeitungsstände in einer Gesamtdarstellung zusammen. Im Kern soll untersucht werden, wie die #short("AAS") als standardisierter Digitaler Zwilling und der #short("EDC") für einen sicheren Datenaustausch genutzt werden können, um die informationstechnische Lücke zwischen dem Fabrikbetreiber und dem Equipmenthersteller zu schließen.
 
 
 === Sommersemester 2025
-<somersemester-2025>
+<kap:somersemester-2025>
 Die erste Phase dieses Forschungsvorhabens legt die technologische und konzeptionelle Grundlage für die
 gesamte Datenpipeline. Der Schwerpunkt liegt auf der Erstellung einer
 validen, standardisierten und dynamischen Datengrundlage. Dies umfasst
@@ -92,14 +92,12 @@ Verschmutzung, Durchfluss und Pumpenleistung abbilden können.
 Insbesondere sollen Szenarien für typische Störfälle wie Pumpenausfälle
 und Rohrverstopfungen modelliert werden. Dies schließt den normalen
 Betrieb, eine allmähliche Verschmutzung, eine plötzliche Blockade sowie
-einen abrupten Pumpenausfall oder Druckabfall mit ein. Die
-
-Implementierung dieser Komponenten und die Verfassung der vorliegenden
+einen abrupten Pumpenausfall oder Druckabfall mit ein. Die Implementierung dieser Komponenten und die Verfassung der vorliegenden
 wissenschaftlichen Dokumentation bilden den Abschluss dieser ersten
 Projektphase.
 
 === Wintersemester 2025/26
-<wintersemester-2025-26>
+<kap:wintersemester-2025-26>
 Aufbauend auf den technologischen Grundlagen der ersten Projektphase verlagert sich der Fokus im Wintersemester 2025/2026 auf den systemübergreifenden Datentransfer sowie den Aufbau einer nachgelagerten Client-Infrastruktur. Ein zentrales Ziel ist die Implementierung einer prototypischen Datenpipeline, welche den souveränen Datenaustausch zwischen der Halbleiterfabrik und dem Equipmenthersteller innerhalb eines verteilten Datenraums realisiert. Im Fokus steht dabei die Integration des #short("EDC") der als HTTP-Proxy fungiert, um die sichere Kommunikation sowie die notwendige Vertragsaushandlung informationstechnisch abzubilden.
 
 Um die über den EDC bereitgestellten Verwaltungsschalen datenökonomisch zu verwerten, bedarf es der Entwicklung einer dedizierten Client-Anwendung. Diese Applikation hat die Aufgabe, die kontinuierlich aktualisierten Druckwerte aus der BaSyx-Umgebung über den Datenraum strukturiert abzurufen. Zur Gewährleistung der Nachvollziehbarkeit und für weiterführende Inspektionen sollen die extrahierten Zeitreihendaten persistiert und für eine Dashboard-gestützte, visuelle Aufbereitung zugänglich gemacht werden.
@@ -108,38 +106,38 @@ Gemäß der Zielsetzung bildet die Auswertung der generierten Druckdifferenzen d
 
 
 == Aufbau der Arbeit
-<aufbau-der-arbeit>
+<kap:aufbau-der-arbeit>
 Die vorliegende wissenschaftliche Arbeit ist in sechs Kapitel
 gegliedert, die den Leser systematisch von der Problemstellung über die
 theoretischen Grundlagen und die Konzeption bis hin zur praktischen
 Implementierung und deren Überprüfung führen.
 
-#strong[@grundlagen] legt das theoretische Fundament zum Verständnis der
+@kap:grundlagen legt das theoretische Fundament zum Verständnis der
 Arbeit. Es werden zunächst die prozesstechnischen Besonderheiten der
 Halbleiterfertigung mit Fokus auf die Sub-Fab erläutert. Anschließend
-werden die Kernkonzepte von Industrie 4.0, des Digitalen Zwillings und
-dessen standardisierter Implementierung durch die #short("AAS") vorgestellt. Abgeschlossen wird das Kapitel mit einer
-Einführung in den #short("EDC") als Technologie für
-einen souveränen Datenaustausch.
+werden die Kernkonzepte von Industrie 4.0, des Digitalen Zwillings und eine Tecnologie für einen  souveränen Datenaustausch vorgestellt.
 
-Aufbauend auf diesen Grundlagen wird in #strong[@konzeption] das
+// dessen standardisierter Implementierung durch die #short("AAS") vorgestellt. Abgeschlossen wird das Kapitel mit einer
+// Einführung in den #short("EDC") als Technologie für
+// einen souveränen Datenaustausch.
+
+Aufbauend auf diesen Grundlagen wird in @kap:konzeption das
 spezifische Lösungskonzept für die Aufgabenstellung entwickelt. Dies
-umfasst den Entwurf der informationstechnischen Zielarchitektur, die
-Herleitung des Simulationsansatzes zur Generierung der Druckdaten sowie
-die Begründung für die Auswahl von Eclipse BaSyx als
-Implementierungs-Framework. Das Kapitel schließt mit dem detaillierten
-Entwurf des AAS-Modells für die Pumpe und das Abatement-System.
+umfasst den Entwurf der informationstechnischen Zielarchitektur und den Aufbau der demonstrator Pipeline.
+// die Herleitung des Simulationsansatzes zur Generierung der Druckdaten sowie
+// die Begründung für die Auswahl von Eclipse BaSyx als
+// Implementierungs-Framework. Das Kapitel befasst sich auch mit dem
+// Entwurf des AAS-Modells für die Pumpe und das Abatement-System. Es behandelt außerdem noch
 
-#strong[@implementierung] dokumentiert die praktische Umsetzung des entworfenen
-Konzepts. Die einzelnen Schritte, von einer Untersuchung der
-Datenraum-Konnektivität über den Aufbau der AAS-Laufzeitumgebung bis hin
-zur konkreten Erstellung der Verwaltungsschalen und der Realisierung und
-Anbindung des Drucksimulators, werden hier detailliert beschrieben.
+@kap:implementierung dokumentiert die praktische Umsetzung des entworfenen
+Konzepts. Die einzelnen Komponenten der Zielarchitektur,werden hier detailliert beschrieben.
+// vom Aufbau der AAS-Laufzeitumgebung über die konkreten Erstellung der Verwaltungsschalen und Realisierung und
+// Anbindung des Drucksimulators gefolgt von der Instandsetzung des Datenraums bis hin zur entnahme, analyse und visualisierung des Clients werden hier detailliert beschrieben.
 
 Die Verifikation der entwickelten Komponenten ist Gegenstand von
-#strong[@tests-und-ergebnisse];. Hier werden die durchgeführten Funktionalitätstests
-der AAS-Laufzeitumgebung sowie die Überprüfung des Drucksimulators und
-seiner erfolgreichen Datenübertragung in die Verwaltungsschale dargelegt
-und die Ergebnisse präsentiert.
+@kap:tests-und-ergebnisse. Hier werden die durchgeführten Funktionalitätstests
+der einzelnen Komponenten der Pipeline dargelegt und die Ergebnisse präsentiert.
 
-Abschließend fasst #strong[@fazit-und-ausblick] die Arbeit zusammen, reflektiert die erzielten Ergebnisse im Kontext der ursprünglichen Aufgabenstellung und gibt einen Ausblick auf zukünftige Forschungsarbeiten. Diese umfassen insbesondere die Anbindung externer Machine-Learning-Dienste an den etablierten Datenraum, um die avisierte KI-gestützte Analyse auf Basis der geschaffenen Infrastruktur vollständig zu realisieren.
+Abschließend fasst @kap:fazit-und-ausblick die Arbeit zusammen, reflektiert die erzielten Ergebnisse im Kontext der ursprünglichen Aufgabenstellung und gibt einen Ausblick auf zukünftige Forschungsarbeiten.
+
+// Diese umfassen insbesondere die Anbindung externer Machine-Learning-Dienste an den etablierten Datenraum, um die avisierte KI-gestützte Analyse auf Basis der geschaffenen Infrastruktur vollständig zu realisieren.

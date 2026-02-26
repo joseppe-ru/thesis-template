@@ -1,12 +1,12 @@
 #import "../utils.typ": *
 = Tests und Ergebnisse
-<tests-und-ergebnisse>
+<kap:tests-und-ergebnisse>
 
 
 
 == Automatisierte Bereitstellung des Demonstrators
-<eval-orchestrierung>
-Die Zusammenführung der einzelnen Domänen (Datenanbieter, Datenraum und Datennutzer) zu einer funktionsfähigen Gesamtarchitektur erfordert eine präzise Orchestrierung der verteilten Systemkomponenten. Um eine deterministische und plattformunabhängige Reproduzierbarkeit (evaluiert unter einer Linux-Umgebung) zu gewährleisten, wurde die gesamte Startroutine in einem zentralen Shell-Skript (`run_full_setup.sh`) automatisiert (vgl. @appendix:runsetup). Der zugehörige Quellcode sowie die Konfigurationsdateien werden im GitLab der HTW Dresden (Zweig "Wintersemester2025_26", @iversion) vorgehalten.
+<kap:eval-orchestrierung>
+Die Zusammenführung der einzelnen Domänen zu einer funktionsfähigen Gesamtarchitektur erfordert eine präzise Orchestrierung der verteilten Systemkomponenten. Um eine deterministische und plattformunabhängige Reproduzierbarkeit (evaluiert unter einer Linux-Umgebung) zu gewährleisten, wurde die gesamte Startroutine in einem zentralen Shell-Skript (`run_full_setup.sh`) automatisiert (vgl. @appendix:runsetup). Der zugehörige Quellcode sowie die Konfigurationsdateien werden im GitLab der HTW Dresden (Zweig "Wintersemester2025_26", @iversion) vorgehalten.
 
 Dieses Skript fungiert als übergeordneter Orchestrator und startet die Microservices in einer sequenziellen Reihenfolge:
 
@@ -19,7 +19,7 @@ Dieses Skript fungiert als übergeordneter Orchestrator und startet die Microser
 + *Datennutzer:* Automatisierter Build-Prozess und Start des Java-basierten #short("AAS")-Clients sowie des Grafana-Dashboards.
 
 == Evaluation der souveränen Datenpipeline
-<eval-workflow>
+<kap:eval-workflow>
 Nach der erfolgreichen, fehlerfreien Ausführung des Orchestrierungs-Skripts wurde der Gesamtsystem-Workflow – vom Asset bis zum Dashboard – in einem integralen Systemtest evaluiert. Dieser Test durchläuft alle informationstechnischen Stationen und verifiziert das Zusammenspiel der im Wintersemester entwickelten Komponenten.
 
 === Datengenerierung und -bereitstellung
@@ -30,7 +30,7 @@ Der Testlauf beginnt in der grafischen Oberfläche des Python-Simulators. Durch 
 ])
 <fig:pythonsimulatorui>
 
-Die erfolgreiche Übermittlung via HTTP-PATCH an den lokalen BaSyx-Server lässt sich unmittelbar in der #short("AAS")-Web-UI (erreichbar unter `localhost:3000`) verifizieren. Die Verwaltungsschale spiegelt die simulierten Druckdifferenzen in Echtzeit wider. Wie in @fig:aaswebui dargestellt, werden die Druckwerte direkt für die richtigen Submodeltemplates eingetragen. Ebenso wird die Strucktur der Verwaltungsschale über die grafische Ansicht der Weboberfläche deutlich.
+Die erfolgreiche Übermittlung via HTTP-PATCH an den lokalen BaSyx-Server lässt sich in der #short("AAS")-Web-UI (`localhost:3000`) verifizieren. Die Verwaltungsschale spiegelt die simulierten Druckdifferenzen in Echtzeit wider. Wie in @fig:aaswebui dargestellt, werden die Druckwerte direkt für die richtigen Submodeltemplates eingetragen. Ebenso wird die Strucktur der Verwaltungsschale über die grafische Ansicht der Weboberfläche deutlich.
 
 #figure(image("../bilder/basyx_wu_ui.png"), caption: [
   Webansicht der Verwaltungsschale

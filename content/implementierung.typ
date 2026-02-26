@@ -1,6 +1,6 @@
 #import "../utils.typ": *
 = Implementierung
-<implementierung>
+<kap:implementierung>
 // == Evaluation der Datenraum Konnektivität
 // <evaluation-der-datenraum-konnektivität>
 // Vor der Implementierung der vollständigen Datenpipeline war eine
@@ -19,7 +19,7 @@
 // sollen.
 
 == Aufbau der AAS-Laufzeitumgebung
-<aufbau-der-aas-laufzeitumgebung>
+<kap:aufbau-der-aas-laufzeitumgebung>
 Die serverseitige Grundlage für die Bereitstellung der Digitalen
 Zwillinge wurde unter Verwendung der offiziellen
 #strong[“Off-the-Shelf“-Komponenten] von Eclipse BaSyx realisiert.
@@ -59,8 +59,8 @@ Environment-Service eine interaktive Weboberfläche bereitstellt, auf der
 die gesamte API-Definition live abgefragt und getestet werden kann.
 
 == Modellierung und Erstellung der Verwaltungsschalen
-<modellierung-und-erstellung-der-verwaltungsschalen>
-Auf Basis der in @entwurf-des-aas-modells konzipierten hierarchischen
+<kap:modellierung-und-erstellung-der-verwaltungsschalen>
+Auf Basis der in @kap:entwurf-des-aas-modells konzipierten hierarchischen
 Struktur (vgl. #strong[Anhang @appendix:aasx-model];) wurden die
 konkreten Verwaltungsschalen für das Abgassystem erstellt. Ein zentrales
 Kriterium bei der Modellierung war die maximale Wiederverwendung von
@@ -111,7 +111,7 @@ späteren Transfer durch den Datenraum. (vgl. @fig:packageexplorer)
 <fig:packageexplorer>
 
 == Realisierung und Anbindung des Drucksimulators
-<realisierung-und-anbindung-des-drucksimulators>
+<kap:realisierung-und-anbindung-des-drucksimulators>
 Die Generierung der für die Analyse notwendigen Livedaten erfolgt durch
 einen eigens für diese Arbeit entwickelten, prozessbasierten Simulator.
 Als technologische Basis wurde die Programmiersprache #strong[Python] in
@@ -139,7 +139,7 @@ spezifische Drucksollwerte eingeben, um individuelle Tests
 durchzuführen. So können gezielt Daten für alle relevanten Zustände –
 vom Optimalbetrieb bis zum vollständigen Systemausfall – erzeugt werden.
 
-Die Anbindung des Simulators an die in @aufbau-der-aas-laufzeitumgebung aufgebaute
+Die Anbindung des Simulators an die in @kap:aufbau-der-aas-laufzeitumgebung aufgebaute
 AAS-Laufzeitumgebung erfolgt über deren REST-API. In einem
 kontinuierlichen Prozess übermittelt der Simulator die aktuell
 generierten Ist-Druckwerte mittels einer HTTP-‘PATCH‘-Anfrage (eine
@@ -153,32 +153,32 @@ Systeme senden. Der Simulator agiert somit als valider und
 realitätsnaher Stellvertreter für die physischen Assets in der
 Zielarchitektur.
 
-Die @fig:drucksimulator zeigt die GUI des
-Python-Drucksimulators. Über Knopfdruck lassen sich die verschiedenen
-Use-Cases wie in @tab:use_cases_simulation beschrieben
-bedienen.
 
 #figure(image("../bilder/drucksimulator.png", width: 80%), caption: [
   Python Drucksimulator GUI
 ])
 <fig:drucksimulator>
 
+Die @fig:drucksimulator zeigt die GUI des
+Python-Drucksimulators. Über Knopfdruck lassen sich die verschiedenen
+Use-Cases wie in @tab:use_cases_simulation beschrieben
+bedienen.
 
 
 == Bereitstellung der lokalen EDC-Infrastruktur
-<impl-edc-infrastruktur>
+<kap:impl-edc-infrastruktur>
 Die praktische Realisierung des souveränen Datenraums erfolgte durch die lokale Instanziierung des #short("EDC"). Um eine realitätsnahe Trennung der Domänen abzubilden, wurden zwei separate Konnektor-Instanzen – ein Provider-Konnektor und ein Consumer-Konnektor – auf Basis der offiziellen #short("EDC")-Samples kompiliert und bereitgestellt. @EDCSamples Die spezifische Konfiguration der jeweiligen Laufzeitumgebungen, wie etwa die Definition der Netzwerk-Ports und der anzubindenden Backend-Dienste, wurde über dedizierte Konfigurationsdateien (`provider-config.properties` und `consumer-config.properties`) realisiert. Zur Gewährleistung einer reproduzierbaren und plattformunabhängigen Ausführung wurde die gesamte Infrastruktur mittels Docker-Compose orchestriert.
 
 Die Validierung der Kontrollebene (Control Plane) und der fehlerfreien Konnektivität zwischen den beiden Domänen wurde iterativ mittels der #short("API")-Entwicklungsplattform Postman durchgeführt. Durch eine eigens erstellte Postman-Collection konnten die essenziellen #short("HTTP")-Aufrufe zur Erstellung von Datenangeboten auf Provider-Seite sowie die Abfrage des Katalogs auf Consumer-Seite manuell ausgelöst und verifiziert werden. Dieser semi-automatisierte Testansatz stellte sicher, dass die kryptografische und logische Infrastruktur des Datenraums funktionsfähig ist, bevor die Client-Applikation angebunden wurde.
 
 
-Die Postman-Collection und die EDC-configurations Dateieen sowie das Docker-Compose script sind auf dem Gitlab der HTW-Dresden zu finden unter `Wintersemester_2026`. @iversion
+Die Postman-Collection und die EDC-configurations Dateieen sowie das Docker-Compose script sind auf dem Gitlab der HTW-Dresden zu finden unter `Wintersemester_2025-26`. @iversion
 
 == Die Client-Applikation
-<impl-client-applikation>
+<kap:impl-client-applikation>
 Den informationstechnischen Abschluss der Datenpipeline bildet eine objektorientierte Konsolenanwendung. Diese wurde in Java (Version 17) unter Verwendung des Build-Management-Tools Maven (`de.htw_dresden.jrudolph:aas_consumer_client`) realisiert. Die interne Softwarearchitektur ist in die logischen Pakete `configuration`, `processing` und `util` gegliedert und folgt strikt etablierten Entwurfsmustern, um eine hohe Wartbarkeit und Skalierbarkeit zu gewährleisten.
 
-Die zentrale Steuerung und Konfiguration der Anwendung erfolgt dynamisch über Umgebungsvariablen. Diese Parameter – wie beispielsweise Verbindungs-URLs, das gewählte Abrufverfahren und Authentifizierungsschlüssel – werden zur Laufzeit in einem unveränderlichen Datenobjekt, dem `EndpointRecord`, gekapselt. Der Einsatz von Java Records garantiert hierbei eine threadsichere und speichereffiziente Haltung der Konfigurationsdaten.
+Die zentrale Steuerung und Konfiguration der Anwendung erfolgt dynamisch über Umgebungsvariablen. Diese Parameter – wie beispielsweise Verbindungs-URLs und das gewählte Abrufverfahren – werden zur Laufzeit in einem unveränderlichen Datenobjekt, dem `EndpointRecord`, gekapselt. Der Einsatz von Java Records garantiert hierbei eine threadsichere und speichereffiziente Haltung der Konfigurationsdaten.
 
 Abhängig von der übergebenen Umgebungsvariable instanziiert das System über das Factory/Builder-Pattern unterschiedliche Strategien zur Datenbeschaffung. Für Entwicklungs- und Validierungszwecke kann die Applikation eine direkte Anbindung an die BaSyx-Laufzeitumgebung (`BaSyxPressureProvider`) nutzen. Im produktiven Zielszenario wird jedoch dynamisch auf den `EDCPressureProvider` umgeschaltet, welcher native #short("HTTP")-Requests an den souveränen Datenraum richtet und den vertraglich ausgehandelten Autorisierungsschlüssel für den Datenabruf injizieren kann.
 
@@ -186,7 +186,7 @@ Der kontinuierliche Abruf der Sensordaten wird im Hintergrund durch die Klasse `
 
 In dieser konkreten Implementierung sind zwei primäre Listener registriert:
 
-*Der `PressureAnalyser`:* Diese Komponente fungiert als Aufpasser und logische Schnittstelle für die Auswertung der Druckdifferenzen. Durch die generische Architektur dient diese Klasse als exakter informationstechnischer Ankerpunkt, an dem in zukünftigen Ausbaustufen komplexe Modelle zur Mustererkennung oder Algorithmen der künstlichen Intelligenz nahtlos und ohne tiefgreifende Refactorings des Clients integriert werden können.
+*Der `PressureAnalyser`:* Diese Komponente fungiert als Aufpasser und logische Schnittstelle für die Auswertung der Druckdifferenzen. Durch die generische Architektur dient diese Klasse als informationstechnischer Ankerpunkt, an dem in zukünftigen Ausbaustufen komplexe Modelle zur Mustererkennung oder Algorithmen der künstlichen Intelligenz nahtlos und ohne tiefgreifende Refactorings des Clients integriert werden können.
 
 *Der `CsvWriter`:* Diese Komponente übernimmt die Persistierung der extrahierten Daten. Bei jedem Eintreffen neuer Werte schreibt der Writer die Druckdaten der Pumpe und des Abatement-Systems, angereichert mit einem exakten Zeitstempel, in den lokalen Speicher. Die Entscheidung für das #short("CSV")-Format fiel hierbei bewusst: Es bietet eine hohe maschinelle Kompatibilität für nachgelagerte Dashboards, ist ressourcenschonend und bleibt gleichzeitig direkt durch den Menschen (bspw. das Wartungspersonal) lesbar und interpretierbar.
 
@@ -200,17 +200,17 @@ Der Quellcode ist wiederzufinden im GitLab der HTW Dresden unter "WinterSemester
 
 
 === Autorisierung und Vertragsaushandlung
-<impl-client-auth>
+<kap:impl-client-auth>
 Um als legitimer Datennutzer im souveränen Datenraum agieren zu können, muss der Client den vertraglich gesicherten Abrufmechanismus implementieren. Anstatt das proprietäre BaSyx-#short("SDK") für direkte Anfragen zu nutzen, generiert der Client native #short("HTTP")-Requests. Der Prozess erfolgt zweistufig: Zunächst ruft die Applikation über den lokalen Consumer-Konnektor die  #short("EDR")) ab. Die #short("JSON")-Antwort dieses Aufrufs enthält einen temporären Autorisierungsschlüssel (`authorization`).
 
 Dieser Schlüssel wird vom Client extrahiert, im Speicher vorgehalten und für alle nachfolgenden Abfragen in den #short("HTTP")-Header der GET-Requests injiziert. Mit dieser Autorisierung fragt der Client periodisch die spezifischen #short("AAS")-Endpunkte für die Druckwerte der Vakuumpumpe und des Abatement-Systems ab. Die aus dem #short("JSON")-Payload der Verwaltungsschale extrahierten Werte werden unmittelbar in strukturierte Laufzeitobjekte (`PressureRecord`) überführt. Innerhalb der Applikation greift anschließend der `PressureAnalyser`, welcher die abgerufenen Druckdifferenzen anhand deterministischer Schwellwerte evaluiert, um Anomalien wie Rohrverstopfungen algorithmisch zu detektieren.
 
 === Datenpersistierung
-<impl-client-persistierung>
-Für die nachgelagerte historische Analyse und die visuelle Aufbereitung müssen die flüchtigen `PressureRecord`-Objekte persistent gespeichert werden. Dies übernimmt die Komponente `CsvWriter`, welche ebenfalls als Observer in den Datenfluss eingehängt ist. Bei jedem Eintreffen neuer Sensordaten transformiert diese Klasse die Druckwerte von Pumpe und Abatement sowie das Ergebnis der Schwellwertanalyse in einen kommagetrennten Datensatz. Um die zeitliche Chronologie zu wahren, wird jedem Eintrag ein präziser System-Zeitstempel (Timestamp) hinzugefügt. Die resultierende #short("CSV")-Datei wird fortlaufend in einem dedizierten lokalen Verzeichnis aggregiert.
+<kap:impl-client-persistierung>
+Für die nachgelagerte historische Analyse und die visuelle Aufbereitung müssen die flüchtigen `PressureRecord`-Objekte persistent gespeichert werden. Dies übernimmt die Komponente `CsvWriter`, welche ebenfalls als Observer in den Datenfluss eingehängt ist. Bei jedem Eintreffen neuer Sensordaten transformiert diese Klasse die Druckwerte von Pumpe und Abatement in einen kommagetrennten Datensatz. Um die zeitliche Chronologie zu wahren, wird jedem Eintrag ein präziser System-Zeitstempel (Timestamp) hinzugefügt. Die resultierende #short("CSV")-Datei wird fortlaufend in einem dedizierten lokalen Verzeichnis aggregiert.
 
 === Visualisierung
-<impl-client-visualisierung>
+<kap:impl-client-visualisierung>
 Die Präsentationsschicht des Systems wurde konzeptionell strikt von der Datenbeschaffung getrennt. Als Visualisierungs-Frontend kommt die Open-Source-Plattform Grafana zum Einsatz, welche als eigenständiger Docker-Container parallel zum Client betrieben wird. Die informationstechnische Kopplung zwischen dem Java-Client und Grafana erfolgt über ein Shared Volume auf Basis des Host-Dateisystems.
 
 Grafana greift über ein spezialisiertes #short("CSV")-Plugin lesend auf die vom Client generierte Datei zu. In der Weboberfläche von Grafana wurden spezifische Dashboards konfiguriert, welche die tabellarischen Zeitreihendaten in dynamische, leicht interpretierbare Liniendiagramme übersetzen. Diese Architektur ermöglicht ein echtzeitnahes Condition Monitoring der simulierten Assets und schließt die Wirkkette vom Datengenerator über den souveränen Datenraum bis hin zum visuellen Endpunkt erfolgreich ab.

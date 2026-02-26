@@ -52,11 +52,15 @@
   show heading.where(level: 4): set text(size: 12pt, weight: "regular", style: "italic")
 
   // Fette  Referenzen
-
   show ref: it => {
     let label-str = str(it.target)
 
-    if label-str.starts-with("fig:") or label-str.starts-with("tab:") or label-str.starts-with("appendix:") {
+    if (
+      label-str.starts-with("fig:")
+        or label-str.starts-with("tab:")
+        or label-str.starts-with("appendix:")
+        or label-str.starts-with("kap:")
+    ) {
       strong(it)
     } else {
       it
@@ -65,6 +69,15 @@
 
   // Zeile Abstand unter bildern
   show figure: set block(above: 2em, below: 2em)
+
+  show figure.where(kind: image): fittich => {
+    set figure(gap: 0pt)
+    block[
+      #rect(stroke: 1pt, inset: 1pt)[#fittich.body]
+      #v(-1em)
+      #fittich.caption
+    ]
+  }
 
   // Tabellen
   set table(

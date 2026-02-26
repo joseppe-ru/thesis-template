@@ -2,9 +2,9 @@
 #import "../utils.typ": *
 
 = Konzeption
-<konzeption>
+<kap:konzeption>
 == Zielarchitektur
-<zielarchitektur-modellierung-einer-subfab-mittels-aas>
+<kap:zielarchitektur-modellierung-einer-subfab-mittels-aas>
 Die Grundlage für den souveränen und standardisierten Austausch von
 Equipmentdaten bildet eine konzeptionelle Zielarchitektur, welche die
 informationstechnische Kapselung der physischen Assets und deren
@@ -21,37 +21,36 @@ Der Prozess hat seinen Ursprung in der Domäne des Datenanbieters, in
 diesem Kontext der Halbleiterfabrik. Hier werden die physikalischen
 Assets – die Vakuumpumpe und das Abatement-System – durch eine
 datengenerierende Simulation repräsentiert, welche die prozessrelevanten
-Druckwerte dynamisch erzeugt. (vgl. @fig:datenfluss, "Simulation")
+Druckwerte dynamisch erzeugt. (@fig:datenfluss, "Simulation")
 
 Diese Livedaten werden in eine
-servicebasierte Laufzeitumgebung überführt, die für die Verwaltung der
-standardisierten Digitalen Zwillinge zuständig ist.  (vgl. @fig:datenfluss, Nr. 1)
+servicebasierte Laufzeitumgebung überführt, die für die Verwaltung der Digitalen Zwillinge zuständig ist.  (@fig:datenfluss, Nr. 1)
 
 Eine solche Umgebung stellt die Kernfunktionalitäten wie einen Speicher
 der #short("AAS")-Instanzen und ihrer Teilmodelle sowie Services, die das
 Auffinden dieser Verwaltungsschalen im Netzwerk des Anbieters
-ermöglicht. (vgl. @fig:datenfluss, "Verwaltungsschale des Digitalen Zwillings")
+ermöglicht. (@fig:datenfluss, "Verwaltungsschale")
 
 Die informationstechnische Brücke zu externen Partnern wird durch die
 Domäne des Datenraums geschlagen. Für die Realisierung dieses souveränen
 Datenaustauschs betreiben beide Geschäftspartner eine Instanz eines
 Konnektors, wie ihn beispielsweise der #short("EDC")
-darstellt. (vgl. @fig:datenfluss, "Connector Kontroll-/Datenebene")
+darstellt. (@fig:datenfluss, "Connector Kontroll-/Datenebene")
 
 Dessen Architektur sieht eine strikte Trennung von Kontroll-
 und Datenebene vor.
-Auf der Kontrollebene werden zunächst die Zugriffs- und Nutzungsbedingungen in Form von Richtlinien erstellt. Dies geschieht auf Seiten der Verwaltungsschale. (vgl. @fig:datenfluss, Nr. 2)
+Auf der Kontrollebene werden zunächst die Zugriffs- und Nutzungsbedingungen in Form von Richtlinien erstellt. Dies geschieht auf Seiten der Verwaltungsschale. (@fig:datenfluss, Nr. 2)
 
-Nach dem erstellen eines Assets, im anwendungsfall dieser Ausarbeitung eine REST-Endpoint Datenreferenz, am Connector kann der Client über seinen Connector nach einem Angebotskatalog fragen und einen digitalen Vertrag aushandeln. (vgl. @fig:datenfluss, Nr. 3)
+Nach dem erstellen eines Assets, im anwendungsfall dieser Ausarbeitung eine REST-Endpoint Datenreferenz, am Connector kann der Client über seinen Connector nach einem Angebotskatalog fragen und einen digitalen Vertrag aushandeln. (@fig:datenfluss, Nr. 3)
 
 Erst nach einem erfolgreichen Abschluss dieses Vertrags wird die Datenebene aktiviert, um den eigentlichen
 Transfer der Verwaltungsschale sicher und gemäß der zuvor vereinbarten
-Richtlinien durchzuführen. (vgl. @fig:datenfluss, Nr. 4 und 5)
+Richtlinien durchzuführen. (@fig:datenfluss, Nr. 4 und 5)
 
 
 In der Domäne des Datennutzers, dem Equipmenthersteller, empfängt
-schlussendlich eine anwenderspezifische Client-Anwendung (vgl. @fig:datenfluss, "Client für Verwaltungsschale") die
-autorisierten #short("AAS")-Daten. Diese Applikation ist für die nachgelagerte,
+schlussendlich eine anwenderspezifische Client-Anwendung (@fig:datenfluss, "Client") die
+autorisierten #short("AAS")-Daten. Diese Applikation ist für die
 fachliche Analyse der übermittelten Informationen zuständig, um aus den
 Druckwerten wertvolle Erkenntnisse für die prädiktive Wartung zu
 gewinnen und entsprechende Handlungsempfehlungen abzuleiten. Diese
@@ -63,7 +62,7 @@ Weise auf die für ihn relevanten Informationen zugreifen kann.
 #include "../bilder/datenfluss.typ"
 
 == Herleitung des Simulationsansatzes
-<herleitung-des-simulationsansatzes>
+<kap:herleitung-des-simulationsansatzes>
 Die Implementierung einer prädiktiven Wartungsstrategie basiert
 fundamental auf der Analyse von Daten, die den \"Gesundheitszustand\"
 eines Systems widerspiegeln. Im betrachteten Anwendungsfall der
@@ -179,7 +178,7 @@ Druckabfall am Abatement bei gleichzeitig nur leicht verändertem Druck
 an der Pumpe auf eine Leckage zwischen den beiden Messpunkten hinweist.
 Die Simulation muss daher so konzipiert sein, dass sie genau diese
 Muster erzeugen kann. Die generierten Zeitreihendaten für die in
-#strong[Tabelle @tab:use_cases_simulation] aufgeführten Szenarien bilden
+@tab:use_cases_simulation aufgeführten Szenarien bilden
 die Grundlage, um Algorithmen zu entwickeln, die eine Klassifizierung
 dieser unterschiedlichen Fehlerbilder ermöglichen und somit eine
 gezielte Wartungsempfehlung ableiten können.
@@ -221,7 +220,7 @@ gezielte Wartungsempfehlung ableiten können.
 #v(1.5em)
 
 == Auswahl des Implementierungs-Frameworks: Eclipse BaSyx
-<auswahl-des-implementierungs-frameworks-eclipse-basyx>
+<kap:auswahl-des-implementierungs-frameworks-eclipse-basyx>
 Um die Konzepte der Verwaltungsschale praktisch umzusetzen, bedarf es
 einer Middleware, die eine standardkonforme Realisierung der Digitalen
 Zwillinge sowie der notwendigen Infrastrukturdienste ermöglicht. Im
@@ -295,7 +294,7 @@ detailliert zu untersuchen, was eine zentrale Anforderung dieser
 wissenschaftlichen Arbeit ist.
 
 == Entwurf des AAS-Modells
-<entwurf-des-aas-modells>
+<kap:entwurf-des-aas-modells>
 Die informationstechnische Abbildung des Sub-Fab-Systems erfordert ein
 durchdachtes und strukturiertes Modell der beteiligten Assets, das deren
 physische und logische Beziehungen widerspiegelt. Der hier verfolgte
@@ -355,24 +354,24 @@ Analyse von Rohrverschmutzungen und Pumpendefekten.
 Die Strucktur der Verwaltungsschale ist in @appendix:aasx-model beschrieben.
 
 == Konzeption des souveränen Datenraums
-<konzeption-edc>
+<kap:konzeption-edc>
 Um die informationstechnische Lücke zwischen dem Fabrikbetreiber (Datenanbieter) und dem Equipmenthersteller (Datennutzer) zu schließen, bedarf es einer Architektur, die den Austausch der generierten Equipmentdaten sicher und richtlinienbasiert ermöglicht. Der Kern dieses Konzepts ist die Etablierung eines dezentralen Datenraums unter Einsatz des #short("EDC").
 
-Anders als bei herkömmlichen, tunnelbasierten Netzwerklösungen (wie etwa einem VPN), bei denen Systeme auf Netzwerkebene durchgereicht werden, fungiert der #short("EDC") als souveräner Daten-Proxy. Das bedeutet, dass die anbietende Domäne ihre Verwaltungsschalen nicht direkt exponiert. Stattdessen wird die Kommunikation in eine Kontrollebene (Control Plane) und eine Datenebene (Data Plane) aufgetrennt.
+Anders als bei herkömmlichen, tunnelbasierten Netzwerklösungen (wie etwa einem VPN), bei denen Systeme auf Netzwerkebene durchgereicht werden, fungiert der #short("EDC") als souveräner Daten-Proxy. Das bedeutet, dass die anbietende Domäne ihre Verwaltungsschalen nicht direkt exponiert. Stattdessen wird die Kommunikation in eine Kontrollebene und eine Datenebene aufgetrennt.
 
 Konzeptionell sieht der lokale Aufbau zwei voneinander isolierte Konnektor-Instanzen vor: einen Provider-Konnektor auf Seiten der Halbleiterfabrik und einen Consumer-Konnektor auf Seiten des Equipmentherstellers. Der Datenaustauschprozess ist streng vertragsbasiert und durchläuft mehrere konzeptionelle Phasen:
 
-*Katalogbereitstellung und -abfrage:* Der Provider-Konnektor aggregiert die verfügbaren Teilmodelle der #short("AAS") (spezifisch das `OperationalData`-Modell mit den Druckwerten) zu einem Datenkatalog. Jedes Datenangebot (Offer) ist zwingend an eine maschinenlesbare Nutzungsrichtlinie (Policy) geknüpft.
+*Katalogbereitstellung und -abfrage:* Der Provider-Konnektor aggregiert die verfügbaren Teilmodelle der #short("AAS") (spezifisch das `OperationalData`-Modell mit den Druckwerten) zu einem Datenkatalog. Jedes Datenangebot ist zwingend an eine maschinenlesbare Nutzungsrichtlinie geknüpft.
 
-*Vertragsaushandlung (Contract Negotiation):* Der Consumer-Konnektor fragt diesen Katalog ab und initiiert eine automatisierte Aushandlung. Stimmen die Anforderungen des Nutzers mit den Richtlinien des Anbieters überein, wird ein bindendes Abkommen (Contract Agreement) generiert.
+*Vertragsaushandlung:* Der Consumer-Konnektor fragt diesen Katalog ab und initiiert eine automatisierte Aushandlung. Stimmen die Anforderungen des Nutzers mit den Richtlinien des Anbieters überein, wird ein bindendes Abkommen generiert.
 
-*Autorisierter Transfer:* Erst nach erfolgreichem Vertragsabschluss tauschen die Kontrollebenen kryptografische Token aus. Die Datenebene des Datennutzers erhält daraufhin eine gesicherte Endpunkt-Referenz (Endpoint Data Reference), über die der tatsächliche #short("HTTP")-Datenstrom der #short("AAS")-Druckwerte abgerufen werden kann.
+*Autorisierter Transfer:* Erst nach erfolgreichem Vertragsabschluss tauschen die Kontrollebenen kryptografische Token aus. Die Datenebene des Datennutzers erhält daraufhin eine gesicherte Endpunkt-Referenz, über die der tatsächliche #short("HTTP")-Datenstrom der #short("AAS")-Druckwerte abgerufen werden kann.
 
 Durch dieses Proxy-Pattern wird sichergestellt, dass die Datenhoheit jederzeit beim Fabrikbetreiber verbleibt, während der Equipmenthersteller einen genormten, sicheren Zugriffspunkt für seine Analysedienste erhält.
 
 
 == Konzeption der Client-Anwendung und Visualisierung
-<konzeption-client-visualisierung>
+<kap:konzeption-client-visualisierung>
 Die konzeptionelle Kette des souveränen Datenaustauschs endet in der Domäne des Datennutzers. Um die bereitgestellten Informationen der Verwaltungsschale domänenspezifisch verwerten zu können, wird eine dedizierte Client-Anwendung als informationstechnischer Endpunkt entworfen. Der Architekturansatz dieses Clients ist modular und evolutionär aufgebaut: Zur initialen Validierung der reinen Kommunikations- und Ausleselogik ist das System so konzipiert, dass es zunächst direkt mit der #short("AAS")-Laufzeitumgebung interagieren kann. In der finalen Ausbaustufe der Architektur wird diese direkte Verbindung durch den #short("EDC") als obligatorischen Proxy substituiert, um den souveränen Datenaustausch zu erzwingen.
 
 Der konzeptionelle Workflow des Clients im vollständig integrierten Datenraum gliedert sich in vier logische Phasen: Vertragsaushandlung, Datenabruf, Auswertung und Persistierung.
@@ -392,7 +391,8 @@ Darüber hinaus ist die Architektur des Clients gezielt darauf ausgelegt, eine n
 
 
 == Architektonische Erweiterbarkeit für KI-gestützte Analyseverfahren
-<konzeption-ki-erweiterbarkeit>
+<kap:konzeption-ki-erweiterbarkeit>
+Diese umfassen insbesondere die Anbindung externer Machine-Learning-Dienste an den etablierten Datenraum, um die avisierte KI-gestützte Analyse auf Basis der geschaffenen Infrastruktur vollständig zu realisieren.
 Ein zentrales Motiv bei der Konzeption dieser Datenpipeline ist die Schaffung einer zukunftssicheren und skalierbaren Infrastruktur, die perspektivisch auch hochkomplexe Auswertungsmethoden unterstützt. Die in der ursprünglichen Zielsetzung avisierte KI zur Mustererkennung von Fehlerfällen wird in diesem Architekturkonzept bewusst als entkoppelte, nachgelagerte Instanz betrachtet. Der Fokus liegt auf der Etablierung einer robusten, standardisierten Datenbasis, die als technologischer Wegbereiter  für derartige fortgeschrittene Analyseverfahren fungiert.
 
 Durch die konsequente Nutzung der #short("AAS") als normiertes semantisches Informationsmodell und des #short("EDC") als souveränen Transportweg entsteht eine hochgradig generische Schnittstellenarchitektur. Diese strikte Standardisierung bedingt, dass eine zukünftige KI-Anwendung nicht als proprietäres, monolithisches Modul tief in den lokalen Client integriert werden muss. Vielmehr kann ein solches System – sei es ein lokaler Machine-Learning-Dienst oder eine cloudbasierte Analyseplattform – als eigenständiger, weiterer Konsument innerhalb des Datenraums agieren. Eine solche Anwendung ist in der Lage, die historischen und echtzeitnahen Druckwerte über etablierte Web-Standards (wie etwa #short("REST")-Schnittstellen) verlustfrei und vertraglich abgesichert abzurufen.

@@ -13,7 +13,7 @@
 ]
 
 // normal diagramm node (htw-color scheme)
-#let blob(pos, label, tint: rgb("FFDD00"), width: 30mm, ..args) = node(
+#let blob(pos, label, tint: rgb("FFDD00"), width: 25mm, ..args) = node(
   pos,
   align(center, label),
   width: width,

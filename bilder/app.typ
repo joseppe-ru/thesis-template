@@ -1,21 +1,7 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import "../utils.typ": *
 
-// #figure(
-//   diagram(
-//     spacing: 3cm,
-//
-//     uml-interface((0, 0), [IAsset], meth: [\+ getId(): String \ \+ getStatus(): Status], name: <iasset>),
-//     uml-class((0, 1), [Pumpe], attr: [\- druck: float \ \- rpm: int], meth: [\+ start() \ \+ stop()], name: <pumpe>),
-//     record((1, 1), label: [AssetStatus], name: <status>),
-//
-//
-//     edge(<pumpe>, <iasset>, "-|>", stroke: (dash: "dashed")),
-//     edge(<pumpe>, <status>, "->", label: [has a], label-pos: 0.5, label-side: right),
-//   ),
-//   caption: [UML-Klassendiagramm des Asset-Modells],
-// )
-//
+
 
 
 #figure(
@@ -24,7 +10,7 @@
     #set text(weight: "regular", size: 10pt)
     #diagram(
       // Etwas größerer Abstand, da die UML-Boxen durch die Methoden breiter sind
-      spacing: (1cm, 1cm),
+      spacing: (0.5cm, 0.5cm),
 
       // --- Nodes ---
       // Konfiguration
@@ -39,7 +25,7 @@
         attr: [\- running: boolean \ \- provider: PressureProvider \ \- endpoints: EndpointRecord \ \- listeners: List<PressureListener>],
         meth: [\+ addListener(l: PressureListener) \ \+ run() \ \- notifyListeners(r: PressureRecord)],
         name: <watcher>,
-        width: 6cm,
+        width: 4.8cm,
       ),
 
       // Strategy Pattern (Provider)

@@ -1,5 +1,5 @@
 = Fazit und Ausblick
-<fazit-und-ausblick>
+<kap:fazit-und-ausblick>
 == Zusammenfassung der Ergebnisse
 Die vorliegende Arbeit adressierte die Herausforderung der ineffizienten, reaktiven Wartung von prozesskritischen Anlagen in der Sub-Fab von Halbleiterfabriken. Um fehleranfällige, manuelle Vor-Ort-Ablesungen zu überwinden, wurde ein fundiertes Konzept für einen standardisierten und datensouveränen Informationsaustausch entwickelt.
 

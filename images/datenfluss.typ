@@ -1,16 +1,6 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
-#import "../utils.typ": *
-
-// #let blob(pos, label, tint: rgb("FFDD00"), width: 30mm, ..args) = node(
-//   pos,
-//   align(center, label),
-//   width: width,
-//   fill: tint.lighten(60%),
-//   stroke: 1pt + tint,
-//   corner-radius: 5pt,
-//   ..args,
-// )
-
+#import "../utils/helpers.typ": *
+#import "../utils/diagrams.typ": *
 
 
 #figure(

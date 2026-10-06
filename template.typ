@@ -1,8 +1,8 @@
 #import "@preview/acrostiche:0.7.0": init-acronyms, print-index
 
 #import "meta.typ": acronyms, meta
-#import "style/cover.typ": *
-#import "style/layout.typ": layout
+#import "cover.typ": *
+#import "layout.typ": layout
 
 #let template(
   body,
@@ -18,7 +18,7 @@
   // Abkürzungen
   init-acronyms(acronyms)
 
-  include "anhang/abstract.typ"
+  include "abstract.typ"
 
   // === Verzeichnisse
   set page(numbering: "I")

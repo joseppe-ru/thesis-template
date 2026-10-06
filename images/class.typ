@@ -1,5 +1,6 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
-#import "../utils.typ": *
+#import "../utils/helpers.typ": *
+#import "../utils/diagrams.typ": *
 
 
 

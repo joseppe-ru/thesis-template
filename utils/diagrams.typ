@@ -1,12 +1,5 @@
-#import "@preview/acrostiche:0.7.0": *
 #import "@preview/fletcher:0.5.8" as fletcher: edge, node
-
-// abbriviations
-#let short(str) = strong(acr(str))
-#let shorts(str) = strong(acrpl(str))
-#let abb(str) = strong(ref(str))
-
-// ---- Diagramms
+// === Diagramms ===
 // schraffieren
 #let hatch(color) = tiling(size: (5pt, 5pt))[
   #place(line(start: (0%, 100%), end: (100%, 0%), stroke: 1pt + color))
@@ -23,7 +16,9 @@
   ..args,
 )
 
-// --- Classdiagrtamm UML
+
+
+// Classdiagrtamm UML
 #let uml-class(pos, name, attr: none, meth: none, ..args) = node(
   pos,
   // Wir nutzen eine Tabelle für die klassischen UML-Trennlinien

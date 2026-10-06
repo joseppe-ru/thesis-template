@@ -1,9 +1,9 @@
-#import "../meta.typ": meta
+#import "meta.typ": meta
 
 #let cover() = {
   set page(numbering: none)
   v(1cm)
-  align(center, image("../bilder/htw_logo.svg", width: 40%))
+  align(center, image("images/htw_logo.svg", width: 40%))
 
   v(5mm)
   align(center, text(1.5em, weight: 700, meta.degree))
@@ -25,7 +25,7 @@
       "Ort:", meta.City,
       "Matrikelnummer:", meta.MatrikelNumber,
       "Erstgutachter:", meta.supervisor,
-      "Zweitgutachter:", meta.advisors.join(", "),
+      "Zweitgutachter:", meta.advisors,
     ))
   ]
 }

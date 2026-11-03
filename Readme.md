@@ -31,3 +31,7 @@ Formatierungen und Layout gemäß der Richtlinien zum anfertigen wissenschaftlic
 - `appendix/...typ` -> includiert und formatiert die Dateien unter `appendix/files` für include in `anhang.typ`
 - `images/` -> enthält alle Bilder (als PNG) oder Diagramme (als .typ gezeichnet mit fletcher -> typst modul für uml usw.) 
 
+## Hinweis:
+Die Richtlinien schreiben vor, dass nach einem Absatz 2 Leerzeilen sein sollen, wenn dannach eine Überschrift folgt...
+Das habe ich nicht geschafft zu automatisieren. Es scheint ein Defizit von Typst zu sein.
+Das muss manuell mit `#v(12pt)` eingefügt werden.

@@ -1,13 +1,13 @@
 #let meta = (
-  title: "Evaluierung der Resilienz und Skalierbarkeit schmalbandiger LoRa-Mesh-Netzwerke in Ausnahmesituationen",
-  author: "Josia Rudolph",
-  degree: "Masterthesis",
-  faculty: "Informatik",
-  supervisor: "Prof. Dr.-Ing. Jörg Vogt",
-  advisors: ("Prof. Dr.-Ing. Robert Baumgartl"),
-  bibNumber: "s88598",
-  MatrikelNumber: "56378",
-  submissionDate: datetime(day: 1, month: 2, year: 2027),
+  title: "Titel",
+  author: "Author",
+  degree: "Master/Bachelor",
+  faculty: "Informatik/Mathematik",
+  supervisor: "Prof. Dr. Dr. 1",
+  advisors: ("Prof. Dr. Dr. 2"),
+  bibNumber: "sXXXXX",
+  MatrikelNumber: "XXXXX",
+  submissionDate: datetime(day: 1, month: 1, year: 2026),
   City: "Dresden",
 )
 

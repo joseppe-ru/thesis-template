@@ -10,14 +10,15 @@ lorem ipsum
 
 #fmt_table(kind: tbl.normal, caption:"Text", columns:3, ..(
   "Object", "Raw", "Display",
+  "Heading",`=/==/=== Kapitel`, "1.1.1 Kapitel",
   "Acronyme", `#short("TUD")`, short("TUD"),
   [Zitat],`@Krom`,[@Krom],
   "Querverweis",`@kap:Temp`,[@kap:Temp],
   "Bold",`*Bold*`,[*Bold*],
-  "Debug Typst",`panic(repr(fkk.fields()))`, ".!.!.! > Console"
+  "Debug Typst",`panic(repr(fkk.fields()))`, ".!.!.! > Console",
 ))<tab:text>
 
-@tab:text
+@tab:text Zeigt ein paar Formatierungsmöglichkeiten.
 
 == Bild <kap:bild>
 === Diagramm <kap:dia>
@@ -32,7 +33,7 @@ lorem ipsum
   caption: [ein PNG]
 )<fig:png>
 
-= neues kapitel
+== neues kapitel
 lorem ipsum bla bla
 
 

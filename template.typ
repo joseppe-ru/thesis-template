@@ -10,7 +10,8 @@
   bib: none,
 ) = {
   // === Deckblatt
-  cover()
+  // cover()
+  include "cover.typ"
 
   // === Layout -> Seitengestaltung
   show: layout
@@ -28,7 +29,9 @@
   pagebreak()
 
   // Abkürzungsverzeichnis
-  print-index(delimiter: "", title: "Abkürzungsverzeichnis", clickable: true, outlined: true, used-only: true)
+  heading(numbering: none)[Abkürzungsverzeichnis]
+  // v(1em)
+  print-index(delimiter: "", title: "", clickable: true, outlined: true, used-only: true, row-gutter:1em)
   pagebreak()
 
   // Abbildungsverzeichnis

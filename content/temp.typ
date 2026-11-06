@@ -7,7 +7,7 @@
 lorem ipsum
 lorem ipsum
 
-Ich studiere an der #short("HTW Dresden").
+Ich studiere an der #short("HTW").
 
 #fmt_table(kind: tbl.normal, caption:"Text", columns:3, ..(
   "Object", "Raw", "Display",
@@ -20,6 +20,8 @@ Ich studiere an der #short("HTW Dresden").
 ))<tab:text>
 
 @tab:text Zeigt ein paar Formatierungsmöglichkeiten.
+
+#short("MCU")
 
 #v(12pt)
 == Bild <kap:bild>

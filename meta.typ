@@ -13,5 +13,6 @@
 
 #let acronyms = (
   "TUD": ("Technische Universität Dresden",),
-  "HTW Dresden": ("Hochschule für Technik und Wirtschaft Dresden",),
+  "HTW": ("Hochschule für Technik und Wirtschaft",),
+  "MCU": ("Microcontroller Unit",),
 )

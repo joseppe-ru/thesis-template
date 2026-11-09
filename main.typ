@@ -5,79 +5,61 @@
 #import "layout.typ": layout, thesis-footer
 
 
-// #template(
-//   appendix: include "anhang.typ",
-//   bib: bibliography("literatur.bib", style: "apa", title: "Literatur"),
-// )[
-//   #include "inhalt.typ"
-// ]
 
-#layout[
-  // === Formblätter
-  // Deckblatt
-  #include "cover.typ"
+#show: layout
 
-  // Aufgabenstellung  
-  // #include "aufgabenstellung.typ"
-  #include "abstract.typ"
+#set heading(numbering: none, outlined: false)
 
-  // Ehrenwörtliche Erklärung
-  // #include "erklaerung.typ"
-  
-  #pagebreak(weak: true)
-  
-  #set page(
-    numbering: "I",
-    footer: thesis-footer(format: "I"),
-  )
+// === Formblätter
+// Deckblatt
+#include "cover.typ"
 
-  = Inhaltsverzeichnis
-  #outline()
+// Aufgabenstellung / Abstract
+#include "abstract.typ"
 
-  = Abbildungsverzeichnis
-  #outline(target: figure.where(kind: image))
+// Ehrenwörtliche Erklärung
+#include "policy.typ"
 
-  = Tabellenverzeichnis
-  #outline(target: figure.where(kind: table))
 
-  = Abkürzungsverzeichnis
-  #init-acronyms(acronyms)
-  // #include "abkuerzungen.typ"
+// === Verzeichnisse
+#set page(
+  numbering: "I",
+  footer: thesis-footer(format: "I"),
+)
+#counter(page).update(1)
 
-  // // Abbildungsverzeichnis
-  // #heading(numbering: none)[Abbildungsverzeichnis]
-  // #outline(
-  //   title: none,
-  //   target: figure.where(kind: image),
-  // )
-  // #pagebreak()
-  //
-  // // Tabellenverzeichnis
-  // #heading(numbering: none)[Tabellenverzeichnis]
-  // #outline(
-  //   title: none,
-  //   target: figure.where(kind: table),
-  // )
-  // #pagebreak()
+= Inhaltsverzeichnis
+#outline(title: none)
 
-  // === Inhalt
-  #pagebreak(weak: true)
-  #set page(
-    numbering: "1",
-    footer: thesis-footer(format: "1"),
-  )
-  #counter(page).update(1)
+#set heading(outlined:true)
+= Abbildungsverzeichnis
+#outline(title:none, target: figure.where(kind: image))
 
-  #include "inhalt.typ"
+= Tabellenverzeichnis
+#outline(title:none, target: figure.where(kind: table))
 
-  = Literaturverzeichnis
-  #bibliography("literatur.bib", style: "apa")
+= Abkürzungsverzeichnis
+#init-acronyms(acronyms)
+#print-index(delimiter: "", title: "", clickable: true, outlined: true, used-only: true, row-gutter:1em)
 
-  // === Anhang
+// === Inhalt
+#set heading(numbering: "1.1")
+#set page(
+  numbering: "1",
+  footer: thesis-footer(format: "1"),
+)
+#counter(page).update(1)
+#pagebreak(weak: true)
 
-  #set heading(numbering: "A.1", supplement: [Anhang])
-  #counter(heading).update(0)
+#include "inhalt.typ"
 
-  #include "anhang.typ"
-  }
-]
+// === Quellen
+= Literaturverzeichnis
+#bibliography("literatur.bib", style: "apa")
+
+// === Anhang
+#set heading(numbering: "A.1", supplement: [Anhang])
+#counter(heading).update(0)
+
+#include "anhang.typ"
+

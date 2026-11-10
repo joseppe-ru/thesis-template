@@ -1,6 +1,6 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
-#import "../utils/helpers.typ": *
-#import "../utils/diagrams.typ": *
+#import "../utils/lib.typ":*
+
 
 
 
@@ -94,5 +94,5 @@
   ],
   caption: [Klassendiagramm der Client-Applikation],
 )
-<fig:classapp>
+<dia:classapp>
 

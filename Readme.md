@@ -3,10 +3,10 @@
 ## Warum Typst?
 
 - deterministischer als Word
-- schneller als Latex (compilierzeit in `ms` statt `sek`/`min`)
+- schneller als Latex (compilierzeit in `ms` statt `min`)
 - weniger Abhängigkeitsprobleme
-- native Diagramm-Module
-- funktionaler Aufbau (alles sind funktionen, die lokal oder global manipuliert werden können)
+- community Plugins
+- funktionaler Aufbau (alles sind Funktionen, die lokal oder global manipuliert werden können)
 - ich mag RUST
 
 - ! steilere Lernkruve
@@ -17,21 +17,37 @@
 Das ist ein Referenz-Projekt, auf dessen Grundlage meine Masterarbeit verfasst wird. 
 Formatierungen und Layout gemäß der Richtlinien zum anfertigen wissenschaftlicher Arbeiten der HTW-Dresden. (zumindest größtenteils)
 
+Die Strucktur der Dateien und Ordner sind von mir frei gewählt und stellen keinen Zwang dar. Ich finde es einfach nur Übersichtlicher, je größer das Projekt anwächst.
+
 ## Aufbau
 
-- `main.typ` -> Einstiegspunkt
-- `template.typ` -> Strucktur des Dokuments (Deckblatt, Abstract, Verzeichnisse, 'body', Literatur, Anhang und die Seitenzahlen usw...)
-- `layout.typ` -> Formatierungen (Textgröße, Headings, Overrides,...)
+- `main.typ` -> Einstiegspunkt, Orchestriert, Struktur des Projekts
+- `layout.typ` -> Formatierungen (Textgröße, Headings, Overrides, ...)
 - `meta.typ` -> Matadaten des Dokumentes (Autor, Gutachter, Daten, Martrikelnummer, ...) und Akronyme
-- `anhang.typ \ inhalt.typ` -> includiren die Dateien aus den Ordnern 'content \ appendix' !muss manuell hinzugefügt werden! 
+- `anhang.typ \ inhalt.typ` -> inkludiren die Dateien aus den Ordnern 'content \ appendix' !muss manuell hinzugefügt werden! 
 - `cover \ abstract.typ` -> selbsterklärend
-- `utils/...typ` -> enthält hilfsfunktionen (für abkürzungen, tabelle-layouts, diagramme, ...), ! alle enthaltennen dateien müssen je einzeln `#import`iert werden. !
-- `literatur.bib` -> sollte alle quellen in entsprechendem Format enthalten (z.b. mit Zotero exportieren)
+- `policy.typ` -> ehrenwörtliche Erklärung
+- `utils/...typ` -> enthält hilfsfunktionen (für abkürzungen, tabelle-layouts, diagramme, ...)
+- `utils/lib.typ` -> enthält die imports für die Hilfsfunktionien (oder anderen nützlichen libraries)
+- `literatur.bib` -> sollte alle Quellen in entsprechendem Format enthalten (z.b. mit Zotero BetterBibLaTex exportieren)
 - `appendix/files/` -> alle Dateien, die im Anhang hinzugefügt werden
 - `appendix/...typ` -> includiert und formatiert die Dateien unter `appendix/files` für include in `anhang.typ`
-- `images/` -> enthält alle Bilder (als PNG) oder Diagramme (als .typ gezeichnet mit fletcher -> typst modul für uml usw.) 
+- `images/` -> enthält alle Bilder (als PNG) oder Diagramme (als .typ, gezeichnet mit fletcher -> typst modul für uml usw.) 
 
 ## Hinweis:
-Die Richtlinien schreiben vor, dass nach einem Absatz 2 Leerzeilen sein sollen, wenn dannach eine Überschrift folgt...
-Das habe ich nicht geschafft zu automatisieren. Es scheint ein Defizit von Typst zu sein.
-Das muss manuell mit `#v(12pt)` eingefügt werden.
+
+- Vor jedem Kapitel ab 2. Ordnung (Unterpunkt) muss eine Leerzeile eigefügt werden z.B. mit `#v(1em)`.
+- Alle wesentlichen Inhalte befinden sich in Unterordnern (content, images, appendix) und müssen in den zugehörigen Dateien (`inhalt.typ`, `anhang.typ`, Bilder im Fließtext) manuell Inkludiert werden. 
+- für alle Hilffunktionen aus `utils/` reicht am Anfang eines neuen Dokumentes der Import der `utils/lib.typ`.
+- Tabellenlayouts sind nicht in `layout.typ` sondern über Funktionen aus `utils/tables.typ` abrufbar.
+
+## How To Run?
+
+1. Typst installieren
+2. `corefonts` bzw. "Time New Roman" installieren
+3. In der Konsole kompilieren
+```bash
+typst compile main.typ
+typst watch main.typ
+```
+4. PDF öffnen (main.pdf)

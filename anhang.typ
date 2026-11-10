@@ -1,4 +1,5 @@
 #let chapters = (
+  "readme.typ",
   "raw.typ",
   "code.typ",
 )

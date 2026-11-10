@@ -15,4 +15,7 @@
   "TUD": ("Technische Universität Dresden",),
   "HTW": ("Hochschule für Technik und Wirtschaft",),
   "MCU": ("Microcontroller Unit",),
+  "PNG": ("Portable Network Grafics",),
+  "JPEG": ("Joint Photographic Experts Group",),
+  "SVG": ("Scalable Vector Graphics",),
 )

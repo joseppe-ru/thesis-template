@@ -1,7 +1,5 @@
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
-#import "../utils/helpers.typ": *
-#import "../utils/diagrams.typ": *
-
+#import "../utils/lib.typ":*
 
 #figure(
   [
@@ -138,4 +136,4 @@
   caption: [Datenfluss über den EDC-Datenraum],
 )
 
-<fig:datenfluss>
+<dia:datenfluss>

@@ -57,7 +57,7 @@
   // --- Inhaltsverzeichnis ---
   // ==========================
   show outline.entry.where(level: 1): it => {
-    v(12pt, weak: true) 
+    v(0.6em, weak: true) 
     strong(it)
   }
 
@@ -79,10 +79,16 @@
   set heading(numbering: "1.1", supplement: [Kapitel])
   // Ebene 1
   show heading.where(level: 1): it => {
-    pagebreak(weak: true)
-    set text(size: 16pt, weight: "bold")
+    // Ausnahme für Cover
+    if not it.has("label") or it.label != <no-break> {
+      pagebreak(weak: true)
+      set text(size: 16pt, weight: "bold")
+    } else {
+      set text(size: 2em, weight: 700)
+    }
     it
   }
+
   // Ebene 2
   show heading.where(level: 2): it => {
     set text(size: 14pt, weight: "bold")
@@ -109,6 +115,8 @@
         or label-str.starts-with("tab:")
         or label-str.starts-with("appendix:")
         or label-str.starts-with("kap:")
+        or label-str.starts-with("eq:")
+        or label-str.starts-with("dia:")
     ) {
       strong(it)
     } else {
@@ -119,40 +127,55 @@
 
   // --- Tabellen und Bilder ---
   // ===========================
-  // => Abbildungen
-  show figure.caption: set text(size: 10pt)
   show figure.caption: set align(left)
-  show figure.where(kind: image): set figure(supplement: [Abbildung])
+  show figure.caption: it => {
+    block( 
+      // width:100%, // Das hier setzt den Caption anfang auf den linken rand der Seite
+      par(
+      hanging-indent: 1em, 
+      strong(it.supplement + [ ] + context it.counter.display(it.numbering)+[: ]) + it.body))
+  }
+
+  show figure.caption: set text(size:10pt)
+
+  // => Abbildungen
+  show figure.where(kind: image): set figure(supplement: [Abbildung], numbering: "1.1")
   show figure.where(kind: image): it => {
     set block(above: 1.2em, below: 1.2em)
+
+    // box(
+    //   stroke:0.5pt+black,
+    //   inset: 2pt,
+    //   it.body
+    // )
+    // it.caption
     it
   }
+
   // => Tabellen
   show figure.where(kind: table): set figure.caption(position: top)
   show figure.where(kind: table): set figure(supplement: [Tabelle])
-    set table(
-      fill: (x, y) => if y == 0 { rgb("BDC1D0") },
-      inset: (right: 1.5em),
-    )
-    show table.cell: it => {
-      if it.y == 0 {
-        set text(black)
-        strong(it)
-      } else if it.body == [] {
-        pad(..it.inset)[_N/A_]
-      } else {
-        it
-      }
-    }
+  show figure.where(kind: table): set text(size:10pt)
+  show figure.where(kind: table): set par(leading: 0.5em, hanging-indent: 12pt, justify:false)
+
+
 
 
   // --- Gleichungen ---
   // ===================
-  set math.equation(numbering: "(1)")
-  show math.equation: set block(above: 1.2em, below: 1.2em)
-  show math.equation: set text(weight: 400)
+  set math.equation(
+    numbering: "(1)",
+    number-align:right
+  )
+  show math.equation.where(block: true): set block(
+    above: 1.2em,
+    below: 1.2em,
+  )
+  show math.equation: set text(weight: 400, size:10pt)
 
-  body
+
+
+body
 }
 
 

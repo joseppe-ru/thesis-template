@@ -1,80 +1,138 @@
-// #import "@preview/acrostiche:0.7.0": *
-#import "../utils/tables.typ":*
-#import "../utils/helpers.typ":*
+#import "../utils/lib.typ":*
 
-= Temp <kap:Temp>
-== Tabelle <kap:tab>
-lorem ipsum
-lorem ipsum
+= Template <kap:Temp>
+== Allgemein <kap:allg>
+Das Dokument dient als Showcase um Formatierungen von Typst darzubieten und zu feinjustieren, bis sie den ansprüchen der #short("HTW") Dresden genügen. Die gesamte Formatierung entspricht den offiziellenen Richtlinen für das Anfertigen wissenschaftlicher Arbeiten nach dem Dokument von #imtext(<schulzeAbschlussarbeiten>) der fakultät Informatik der und ist in der Datei `layout.typ` programmiert.
+Die einzige Ausnahme bildet die Regel, dass nach einem Kapiel zwei leerzeilen platz gelassen werden muss. Dieser Abstand muss zusätzlich eingefügt werden, da ich dafür keine allgemeine Regel definieren konnte (`#v(12pt)`).
 
-Ich studiere an der #short("HTW").
+Alle anderen eigenheiten und die Strucktur dieses Projektes befindet sind in @appendix:readme.
 
-#fmt_table(kind: tbl.normal, caption:"Text", columns:3, ..(
+Im allgemeinen ist zu sagen, dass sich Typst beim schreiben des Fließtextes vorwiegend wie Markdown anfühlen soll. Das Layout des gesamten Dokumentes wird über Funktionen bestimmt, welche die Standardwerte der von Typst generierten Objekte überschreiben können. 
+
+#v(12pt)
+== Textformatierung <kap:tab>
+
+Die @tab:text führt ein paar Formatierungsmöglichkeiten auf. Für maches benutze ich eigene Funktionen aus dem Unterordner `utils/`. 
+
+#fmt_table(kind: tbl.normal, caption:"Fließtext Formatierungshinweise", columns:(1fr,1fr,1fr), ..(
   "Object", "Raw", "Display",
   "Heading",`=/==/=== Kapitel`, "1.1.1 Kapitel",
   "Acronyme", `#short("TUD")`, short("TUD"),
-  [Zitat],`@Krom`,[@Krom],
+  [Zitat],`@SPIXSPIHow`,[@SPIXSPIHow],
   "Querverweis",`@kap:Temp`,[@kap:Temp],
-  "Bold",`*Bold*`,[*Bold*],
+  "Fett",`*Fett*`,[*Fett*],
+  "Kursiv", `_kursiv_`,[_kursiv_], 
   "Debug Typst",`panic(repr(fkk.fields()))`, ".!.!.! > Console",
 ))<tab:text>
 
-@tab:text Zeigt ein paar Formatierungsmöglichkeiten.
+#v(12pt)
+== Mathe <kap:mathe>
+Mathematische Funktionen können umschlossen von 2 Dollerzeichen (`$..$`) geschreiben werden. 
 
-#short("MCU")
+`$ F = m dot a = 12 "N" $`, 
+
+$ F = m dot a = 12 "N" $ <eq:kraft>
+
+Referenz auf die newtoische Gleichung der Kraft in @eq:kraft.
+
+
+#v(12pt)
+== Zitate
+=== Im laufenden Satz
+Der vorgeschriebene Zitierstil weicht doch etwas von "apa" oder aderen ab. Daher ist dieser auch fest in einer `cite-styl.cls` Datei festgehalten. Diese wurde erstellt von #imtext(<googlegemini>).
+
+#v(12pt)
+=== Direktes Zitat
+"Generic and generative methods are used whenever possible. These principles lead to an understandable, maintainable, efficient, and provably correct system." #zitat(<ferdinandReliablePreciseWCET2001a>).
+
+#v(12pt)
+=== Indirektes Zitat
+So steht der Text da gar nicht drin. #vgl(<abelNanoBenchLowOverheadTool2020a>,s:"5")
+
 
 #v(12pt)
 == Bild <kap:bild>
 === Diagramm <kap:dia>
-lorem ipsum
+Für (UML)-Diagramme und jede andere Art von Plots gibt es sehr viele community-Module. Diese findet man unter: https://typst.app/universe/search/?q=uml
 
-#include "../images/datenfluss.typ"
+Für den Plot von @dia:csv wurde `lilaq` verwendet, welches Die Datenpunkte aus einer `CSV`-Datei ausließt.
+
+#include "../images/diagram.typ"
 
 #v(12pt)
 === Picture <kap:picture>
-lorem ipsum
+Ebenso lassen sich Bilder unteranderem im #short("PNG"), #short("JPEG") oder #short("SVG") Format einbinden, wie unter @fig:meme veranschaulicht wird. 
+
+
 #figure(
-  image("../images/schät1.png", height: 50%), 
-  caption: [ein PNG]
-)<fig:png>
+  box(stroke:0.5pt+black,
+    inset: 2pt,
+    image("../images/programmerhumor.jpeg", height: 50%)), 
+  caption: [ein Informatiker Witzbild]
+)<fig:meme>
+
+Bei solchen Bilder wie @fig:meme ist es machnal wichtig für die Darstellung, einen seperaten rand zu haben, wie in diesem Fall mit `box` gezeichnet.
 
 #v(12pt)
-= Etwas Text 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+== Stichpunke
+Eine Stichpunktliste ist sehr einfach gehandhabt. Man verwedet ein Minus "-" im Fließtext.
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+Normal list.
+- Text
+- Math
+- Layout
+- ...
 
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+Function call.
+#list(
+  [Foundations],
+  [Calculate],
+  [Construct],
+  [Data Loading],
+)
 
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. 
+#v(12pt)
+== Aufzählung
+Mit Plus "+", oder Zahl "1." oder Funktion "`#enum[][][]`"
 
-At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+Automatically numbered:
++ Preparations
++ Analysis
++ Conclusions
 
-Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.
+Manually numbered:
+2. What is the first step?
+5. I am confused.
++  Moving on ...
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+Function call.
+#enum[First][Second]
+
+#v(12pt)
+= Viel Text mit Absätzen
+#lorem(100)
+
+#lorem(50)
+
+#lorem(200)
+
+#lorem(10)
 
 #v(12pt)
 = Text mit Unterpunkten
 == Unterpunkt
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
+#lorem(130)
 #v(12pt)
 == Runder Punkt
 === Runder Punkt Unterpunkt
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-
+#lorem(220)
 #v(12pt)
 === Runder Punkt, wunder Punkt
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-
+#lorem(100)
 #v(12pt)
 == Kunterbunt
-Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+#lorem(50)
 

@@ -17,51 +17,6 @@
             # Thesis schreiben
             typst
             corefonts
-
-            # --- buildroot für SBC, Linux 6.12 mit preemtprt, glibc und bussybox --- 
-            # =======================================================================
-            # Build tools
-              gcc
-              gnumake
-              binutils
-              pkg-config
-
-              # Buildroot dependencies
-              bc
-              bison
-              flex
-              gawk
-              perl
-              python3
-              rsync
-              cpio
-              unzip
-              file
-              wget
-              git
-              which
-              patch
-              diffutils
-              findutils
-              gettext
-
-              # Libraries / host tools
-              ncurses
-              openssl
-              zlib
-              libelf
-              libyaml
-              dtc
-
-              # Utilities
-              util-linux
-              coreutils
-              gnused
-              gnutar
-              gzip
-              xz
-              bzip2
-
           ];
 
           TYPST_FONT_PATHS = "${pkgs.corefonts}/share/fonts";

@@ -19,6 +19,8 @@ Formatierungen und Layout gemäß der Richtlinien zum anfertigen wissenschaftlic
 
 Die Strucktur der Dateien und Ordner sind von mir frei gewählt und stellen keinen Zwang dar. Ich finde es einfach nur Übersichtlicher, je größer das Projekt anwächst.
 
+> [!debug] Rechtschreibefehler gehören explizit mit zum Test.
+
 ## Aufbau
 
 - `main.typ` -> Einstiegspunkt, Orchestriert, Struktur des Projekts
